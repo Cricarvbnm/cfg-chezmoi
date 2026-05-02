@@ -1,0 +1,4 @@
+[".config/nvim"]
+type = "git-repo"
+url = "ssh://git@codeberg.org/Alechron/cfg-lazyvim.git"
+refreshPeriod = "168h"
