@@ -2,3 +2,8 @@
 type = "git-repo"
 url = "ssh://git@codeberg.org/Alechron/cfg-lazyvim.git"
 refreshPeriod = "168h"
+
+[".agents/antigravity-awesome-skills"]
+type = "git-repo"
+url = "https://github.com/sickn33/antigravity-awesome-skills.git"
+refreshPeriod = "168h"
