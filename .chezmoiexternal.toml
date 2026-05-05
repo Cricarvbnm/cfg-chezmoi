@@ -7,3 +7,9 @@ refreshPeriod = "168h"
 type = "git-repo"
 url = "https://github.com/sickn33/antigravity-awesome-skills.git"
 refreshPeriod = "168h"
+
+[".agents/antigravity-awesome-skills".pull]
+args = ["--depth", "1"]
+
+[".agents/antigravity-awesome-skills".clone]
+args = ["--depth", "1"]
