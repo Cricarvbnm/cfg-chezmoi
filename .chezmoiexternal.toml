@@ -13,3 +13,14 @@ args = ["--depth", "1"]
 
 [".agents/antigravity-awesome-skills".clone]
 args = ["--depth", "1"]
+
+["模板/pandoc/pandoc-latex-template"]
+type = "git-repo"
+url = "https://github.com/Wandmalfarbe/pandoc-latex-template.git"
+refreshPeriod = "168h"
+
+["模板/pandoc/pandoc-latex-template".clone]
+args = ["--depth", "1"]
+
+["模板/pandoc/pandoc-latex-template".pull]
+args = ["--depth", "1"]
