@@ -8,6 +8,10 @@ Switch to Last-Used Keyboard Layout=none,Meta+Alt+L,切换到上次使用过的�
 Switch to Next Keyboard Layout=Meta+Alt+K,Meta+Alt+K,切换到下一个键盘布局
 _k_friendly_name=键盘布局切换器
 
+[com.qq.QQ]
+5C66219330D9F3F676586F4F927C7E07-Ctrl+Alt+A=,none,Electron shortcut Ctrl+Alt+A
+_k_friendly_name=QQ
+
 [kaccess]
 Toggle Screen Reader On and Off=Meta+Alt+S,Meta+Alt+S,切换屏幕阅读器开关
 _k_friendly_name=无障碍辅助
@@ -305,3 +309,7 @@ _launch=Ctrl+Alt+T
 
 [services][org.kde.konsole.desktop]
 _launch=none
+
+[services][org.kde.spectacle.desktop]
+CurrentMonitorScreenShot=
+OpenWithoutScreenshot=
