@@ -21,8 +21,9 @@ This is a **chezmoi dotfile repository**, not a typical application. There are n
 
 Managed via `.chezmoiexternal.toml`:
 
-- `.config/nvim` → LazyVim from codeberg
+- `.config/nvim` → LazyVim config from codeberg (personal fork)
 - `.agents/antigravity-awesome-skills` → AI skills from GitHub
+- `模板/pandoc/pandoc-latex-template` → Pandoc LaTeX template from GitHub
 
 ### README Files
 
