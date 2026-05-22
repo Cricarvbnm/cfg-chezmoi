@@ -1,2 +1,5 @@
 **/README.md
 **/AGENTS.md
+
+# Include global AGENTS.md
+!.config/opencode/AGENTS.md
