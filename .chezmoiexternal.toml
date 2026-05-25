@@ -24,3 +24,14 @@ args = ["--depth", "1"]
 
 ["模板/pandoc/pandoc-latex-template".pull]
 args = ["--depth", "1"]
+
+["项目/ppt-master"]
+type = "git-repo"
+url = "https://github.com/hugohe3/ppt-master.git"
+refreshPeriod = "168h"
+
+["项目/ppt-master".pull]
+args = ["--depth", "1"]
+
+["项目/ppt-master".clone]
+args = ["--depth", "1"]
