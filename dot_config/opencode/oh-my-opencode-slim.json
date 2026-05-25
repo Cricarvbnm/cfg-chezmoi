@@ -112,7 +112,7 @@
         ]
       },
       "oracle": {
-        "model": "opencode-go/deepseek-v4-pro",
+        "model": "deepseek/deepseek-v4-pro",
         "variant": "max",
         "skills": [
           "simplify"
@@ -120,7 +120,7 @@
         "mcps": []
       },
       "council": {
-        "model": "opencode-go/deepseek-v4-pro",
+        "model": "deepseek/deepseek-v4-pro",
         "variant": "high",
         "skills": [],
         "mcps": []
@@ -148,7 +148,7 @@
         "mcps": []
       },
       "fixer": {
-        "model": "opencode-go/deepseek-v4-flash",
+        "model": "deepseek/deepseek-v4-flash",
         "variant": "high",
         "skills": [],
         "mcps": []
