@@ -8,7 +8,7 @@
 
 ## 提交约定
 
-- 格式：`feat(主题)` / `change(scope): 描述` / `fix(scope): 描述`
+- 使用技能 'commit' 或类似技能
 - 只做本地提交，不执行 `git push`
 
 ## 问题记录
