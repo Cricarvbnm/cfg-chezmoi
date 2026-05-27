@@ -1,9 +1,5 @@
 # AGENTS.md
 
-## 工作确认
-
-执行工作非只读的工作前，应先报告工作方案，等待确认后执行工作。
-
 ## 语言与格式
 
 - 语言默认使用简体中文，日期用 ISO 8601 格式（`YYYY-MM-DD`）
@@ -12,9 +8,7 @@
 
 ## 提交约定
 
-详见 [commit-conventions.md](commit-conventions.md)。摘要：
-
-- 类型：`feat`（新增）/ `change`（修改）/ `fix`（修复）/ `docs` / `ref` / `test` / `build`
+- 格式：`feat(主题)` / `change(scope): 描述` / `fix(scope): 描述`
 - 只做本地提交，不执行 `git push`
 
 ## 问题记录
