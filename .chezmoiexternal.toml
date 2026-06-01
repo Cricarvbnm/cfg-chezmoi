@@ -11,34 +11,19 @@ refreshPeriod = "168h"
 include = ["*/understand-anything-plugin/**"]
 
 [".agents/antigravity-awesome-skills"]
-type = "git-repo"
-url = "https://github.com/sickn33/antigravity-awesome-skills.git"
+type = "archive"
+url = "https://github.com/sickn33/antigravity-awesome-skills/archive/main.tar.gz"
+stripComponents = 1
 refreshPeriod = "168h"
-
-[".agents/antigravity-awesome-skills".pull]
-args = ["--depth", "1"]
-
-[".agents/antigravity-awesome-skills".clone]
-args = ["--depth", "1"]
 
 ["模板/pandoc/pandoc-latex-template"]
-type = "git-repo"
-url = "https://github.com/Wandmalfarbe/pandoc-latex-template.git"
+type = "archive"
+url = "https://github.com/Wandmalfarbe/pandoc-latex-template/archive/master.tar.gz"
+stripComponents = 1
 refreshPeriod = "168h"
-
-["模板/pandoc/pandoc-latex-template".clone]
-args = ["--depth", "1"]
-
-["模板/pandoc/pandoc-latex-template".pull]
-args = ["--depth", "1"]
 
 ["项目/ppt-master"]
-type = "git-repo"
-url = "https://github.com/hugohe3/ppt-master.git"
+type = "archive"
+url = "https://github.com/hugohe3/ppt-master/archive/master.tar.gz"
+stripComponents = 1
 refreshPeriod = "168h"
-
-["项目/ppt-master".pull]
-args = ["--depth", "1"]
-
-["项目/ppt-master".clone]
-args = ["--depth", "1"]
