@@ -1,5 +1,44 @@
 # AGENTS.md
 
+## 知识库
+
+共享 Obsidian vault 位于 `~/knowledge/`，是跨 session 的持久记忆。
+
+### 优先级：先查知识库，再写代码
+
+在探索代码或编写实现之前，先检索 `~/knowledge/` 中是否已有相关知识。
+
+### 目录约定
+
+| 目录 | 用途 |
+|------|------|
+| `0-Inbox/` | 待整理的草稿和灵感 |
+| `raw/` | 待 agent 消化的原始材料（文章、转写） |
+| `coding/` | 编程规范和最佳实践（按语言分二级目录） |
+| `development/` | 跨语言开发实践（项目结构、提交规范） |
+| `tools/` | 工具链配置和使用 |
+| `systems/` | 文件组织、环境管理、工作流 |
+| `life/` | 生活知识 |
+| `_templates/` | 笔记模板（说明了文档结构约定） |
+
+### 使用方式
+
+- 按领域搜索：glob `~/knowledge/coding/python/python-*.md`
+- 按关键词搜索：grep `~/knowledge` 中的 `tags:` 或自由文本
+- 每条笔记的 YAML frontmatter 包含 `tags`、`status`、`source`、`applicability`、`expiry`
+- 笔记之间使用 `[[wikilink]]` 交叉引用
+- 发现 0-Inbox 或 raw 中有内容时，使用 `knowledge-ingest` 技能主动整理
+- 对话中发现值得保留的知识时，使用 `knowledge-capture` 技能提取并写入
+- 定期使用 `knowledge-maintain` 技能审计知识库健康状态（链接、孤立笔记、过期规则等）
+
+### 边界
+
+- **Always**：写代码前先搜索知识库；发现新知识时主动记录到 0-Inbox
+- **Ask first**：修改 `~/knowledge/` 中已存在的笔记
+- **Never**：提交 secret 到知识库
+
+---
+
 ## 语言与格式
 
 - 语言默认使用简体中文，日期用 ISO 8601 格式（`YYYY-MM-DD`）

@@ -3,6 +3,11 @@ type = "git-repo"
 url = "ssh://git@codeberg.org/Alechron/cfg-lazyvim.git"
 refreshPeriod = "168h"
 
+["knowledge"]
+type = "git-repo"
+url = "ssh://git@codeberg.org/Alechron/knowledge-valut.git"
+refreshPeriod = "168h"
+
 [".agents/Understand-Anything"]
 type = "archive"
 url = "https://github.com/Lum1104/Understand-Anything/archive/refs/heads/main.zip"
