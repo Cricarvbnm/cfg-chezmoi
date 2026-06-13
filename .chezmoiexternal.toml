@@ -5,7 +5,7 @@ refreshPeriod = "168h"
 
 ["knowledge"]
 type = "git-repo"
-url = "ssh://git@codeberg.org/Alechron/knowledge-valut.git"
+url = "ssh://git@codeberg.org/Alechron/knowledge-vault.git"
 refreshPeriod = "168h"
 
 [".agents/Understand-Anything"]

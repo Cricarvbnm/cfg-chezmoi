@@ -78,13 +78,14 @@ sudo pacman -S chezmoi
 
 ```bash
 # Clone and apply in one command
-chezmoi init --apply Alechron/dotfiles
+# FIXME: Replace with your actual Codeberg repo path
+chezmoi init --apply Alechron/cfg-chezmoi
 ```
 
 Or manually:
 
 ```bash
-git clone https://codeberg.org/Alechron/dotfiles.git ~/.local/share/chezmoi
+git clone https://codeberg.org/Alechron/cfg-chezmoi.git ~/.local/share/chezmoi
 chezmoi apply
 ```
 
@@ -163,7 +164,7 @@ Defined in `.chezmoiexternal.toml`. These are downloaded separately and kept in 
 | Target Path | Type | Source | Refresh |
 |---|---|---|---|
 | `~/.config/nvim` | `git-repo` | `ssh://git@codeberg.org/Alechron/cfg-lazyvim.git` | 168h |
-| `~/knowledge` | `git-repo` | `ssh://git@codeberg.org/Alechron/knowledge-valut.git` | 168h |
+| `~/knowledge` | `git-repo` | `ssh://git@codeberg.org/Alechron/knowledge-vault.git` | 168h |
 | `~/.agents/Understand-Anything` | `archive` | GitHub: Lum1104/Understand-Anything | 168h |
 | `~/.agents/antigravity-awesome-skills` | `archive` | GitHub: sickn33/antigravity-awesome-skills | 168h |
 | `~/模板/pandoc/pandoc-latex-template` | `archive` | GitHub: Wandmalfarbe/pandoc-latex-template | 168h |
