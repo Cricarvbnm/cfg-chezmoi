@@ -67,3 +67,18 @@
 ## 图表
 
 需要图示时，首选 Mermaid，优于 ASCII 字符画。目录结构仍可用字符画表示
+
+## 技能
+
+技能集中存放于 `~/.agents/skills/`，由 openCode 自动发现。此外 openCode 也会扫描项目目录下的 `.agents/skills/` 和 `.opencode/skills/`。
+
+当前全局技能：
+
+| 技能 | 用途 |
+|------|------|
+| `grill-with-docs` | 需求澄清：逐题逼问决策树，对照项目术语表和 ADR，自动更新 CONTEXT.md |
+| `commit` | 提交：遵循 conventional commit 格式 |
+| `lint-and-validate` | 代码校验：每次代码变更后运行 |
+| `knowledge-*` | 知识库管理：提取、消化、维护 Obsidian vault |
+
+项目级技能（如 `knowledge-curation`、`repo-maintenance`、`pandoc-yaml`）存放于各项目的 `.agents/skills/` 目录。
