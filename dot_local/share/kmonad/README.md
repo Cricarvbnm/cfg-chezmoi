@@ -1,18 +1,20 @@
-# kmonad
+# kmonad — ~/.local/share/kmonad/
 
-Physical keyboard mappings for custom keyboards, read by [kmonad](https://github.com/kmonad/kmonad).
+Physical keyboard remapping configurations for [kmonad](https://github.com/kmonad/kmonad).
 
-`*.kbd` should be modified to adapt with your own machine.
+## Contents
 
-In my situation, there's a systemd.service reading `/etc/kmonad` for configurations.
-A symlink to this directory is placed there.
+| File | Purpose |
+|------|---------|
+| `alechron-at.kbd` | AT keyboard mapping (laptop built-in keyboard) |
+| `alechron-usb.kbd` | USB keyboard mapping (external keyboard on specific port) |
 
-## Files
+## Deployment
 
-### alechron-at.kbd
+A systemd service reads configs from `/etc/kmonad/`. A symlink at `/etc/kmonad/` points to this directory so that kmonad picks up the latest config on restart.
 
-AT keyboard mapping.
+## Conventions
 
-### alechron-usb.kbd
-
-USB keyboard mapping, just taking a certain port as the input.
+- File naming: `<hostname>-<interface>.kbd`
+- After editing a `.kbd` file, restart the kmonad service: `sudo systemctl restart kmonad`
+- Each `.kbd` file should be self-contained — no shared includes between keyboard types

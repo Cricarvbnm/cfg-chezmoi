@@ -1,5 +1,10 @@
 # AGENTS.md
 
+<!--
+  注意：本文件是部署到 ~/.config/opencode/ 的 AI agent 行为守则，
+  不是 dotfiles 仓库的目录说明文档。仓库维护信息见 ~/.local/share/chezmoi/AGENTS.md。
+-->
+
 ## 知识库
 
 共享 Obsidian vault 位于 `~/knowledge/`，是跨 session 的持久记忆。
