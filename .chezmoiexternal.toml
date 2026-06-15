@@ -21,13 +21,13 @@ url = "https://github.com/sickn33/antigravity-awesome-skills/archive/main.tar.gz
 stripComponents = 1
 refreshPeriod = "168h"
 
-["模板/pandoc/pandoc-latex-template"]
+["Templates/pandoc/pandoc-latex-template"]
 type = "archive"
 url = "https://github.com/Wandmalfarbe/pandoc-latex-template/archive/master.tar.gz"
 stripComponents = 1
 refreshPeriod = "168h"
 
-["项目/ppt-master"]
+["Projects/ppt-master"]
 type = "archive"
 url = "https://github.com/hugohe3/ppt-master/archive/master.tar.gz"
 stripComponents = 1
