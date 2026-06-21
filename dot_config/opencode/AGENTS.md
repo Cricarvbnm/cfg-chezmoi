@@ -73,3 +73,7 @@
 | `knowledge-*` | 知识库管理：提取、消化、维护 Obsidian vault |
 
 项目级技能（如 `knowledge-curation`、`repo-maintenance`、`pandoc-yaml`）存放于各项目的 `.agents/skills/` 目录。
+
+## 权限边界
+
+永远不要主动使用 sudo 等提权方法，如果你需要使用，应给出方法和理由，并解释这个操作的含义，让用户代为使用；或是使用其他方法完成工作，避免提权。
