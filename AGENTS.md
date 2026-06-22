@@ -33,8 +33,8 @@ Managed via `.chezmoiexternal.toml`:
 | `~/knowledge` | git-repo | Obsidian knowledge vault from Codeberg | 168h |
 | `~/.agents/Understand-Anything` | archive | GitHub: Lum1104/Understand-Anything | 168h |
 | `~/.agents/antigravity-awesome-skills` | archive | GitHub: sickn33/antigravity-awesome-skills | 168h |
-| `~/模板/pandoc/pandoc-latex-template` | archive | GitHub: Wandmalfarbe/pandoc-latex-template | 168h |
-| `~/项目/ppt-master` | archive | GitHub: hugohe3/ppt-master | 168h |
+| `~/Templates/pandoc/pandoc-latex-template` | archive | GitHub: Wandmalfarbe/pandoc-latex-template | 168h |
+| `~/Projects/ppt-master` | archive | GitHub: hugohe3/ppt-master | 168h |
 
 ### Run Scripts
 

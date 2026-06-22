@@ -16,7 +16,6 @@ Personal configuration managed by [chezmoi](https://www.chezmoi.io/). Single-com
 - [What's Configured](#whats-configured)
   - [Git](#git)
   - [Kitty Terminal](#kitty-terminal)
-  - [KDE Plasma Shortcuts](#kde-plasma-shortcuts)
   - [Fonts (Fontconfig)](#fonts-fontconfig)
   - [kmonad Keyboard Remapping](#kmonad-keyboard-remapping)
   - [SSH](#ssh)
@@ -40,7 +39,6 @@ Personal configuration managed by [chezmoi](https://www.chezmoi.io/). Single-com
 | [Delta](https://github.com/dandavison/delta) | Git diff pager | `~/.config/git/delta.conf` |
 | [OpenCode](https://opencode.ai/) | AI coding agent | `~/.config/opencode/` |
 | Fontconfig | System font preferences | `~/.config/fontconfig/` |
-| KDE Plasma | Global shortcuts | `~/.config/kglobalshortcutsrc` |
 | SSH | Client proxy | `~/.ssh/config` |
 | TeX (texmf) | Local TeX tree + font cache | `~/texmf/` |
 
@@ -137,7 +135,6 @@ Files prefixed with `private_` get restrictive permissions: 600 for files, 700 f
 │   ├── fontconfig/conf.d/
 │   │   └── 50-prefered-fonts.conf       # CJK font preferences
 │   ├── opencode/                        # OpenCode AI agent config
-│   ├── private_kglobalshortcutsrc       # KDE global shortcuts
 │   └── nvim/                            # → External: LazyVim (git-repo)
 ├── dot_local/share/kmonad/
 │   ├── alechron-at.kbd                  # AT keyboard mapping
@@ -167,8 +164,8 @@ Defined in `.chezmoiexternal.toml`. These are downloaded separately and kept in 
 | `~/knowledge` | `git-repo` | `ssh://git@codeberg.org/Alechron/knowledge-vault.git` | 168h |
 | `~/.agents/Understand-Anything` | `archive` | GitHub: Lum1104/Understand-Anything | 168h |
 | `~/.agents/antigravity-awesome-skills` | `archive` | GitHub: sickn33/antigravity-awesome-skills | 168h |
-| `~/模板/pandoc/pandoc-latex-template` | `archive` | GitHub: Wandmalfarbe/pandoc-latex-template | 168h |
-| `~/项目/ppt-master` | `archive` | GitHub: hugohe3/ppt-master | 168h |
+| `~/Templates/pandoc/pandoc-latex-template` | `archive` | GitHub: Wandmalfarbe/pandoc-latex-template | 168h |
+| `~/Projects/ppt-master` | `archive` | GitHub: hugohe3/ppt-master | 168h |
 
 ### Run Scripts
 
@@ -187,7 +184,7 @@ chezmoi can execute scripts during apply. This repo uses `run_once_` scripts (ex
 
 - Default branch: `main`
 - User: Alec &lt;alechron@outlook.com&gt;
-- Short aliases: `a` (add), `aa` (add --all), `s` (status --short), `sl` (status), `c` (commit), `ca` (commit --all), `cu` (commit --amend)
+- Short aliases: `a` (add), `aa` (add --all), `s` (status --short --branch), `sl` (status), `c` (commit), `ca` (commit --all), `cu` (commit --amend)
 - Uses [Delta](https://github.com/dandavison/delta) for syntax-highlighted diffs
 
 ### Kitty Terminal
@@ -197,17 +194,6 @@ chezmoi can execute scripts during apply. This repo uses `run_once_` scripts (ex
 - [Catppuccin Macchiato](https://catppuccin.com/) color theme
 - Theme loaded via `include current-theme.conf` (managed by the kitty [themes kitten](https://sw.kovidgoyal.net/kitty/kittens/themes/))
 - All other settings use kitty defaults
-
-### KDE Plasma Shortcuts
-
-**File**: `~/.config/kglobalshortcutsrc`
-
-- Window management shortcuts (Krohnkite tiling)
-- Volume and microphone control
-- Keyboard layout switching
-- Session management: lock, logout, reboot, shutdown
-
-Tracked primarily for Krohnkite tiling integration.
 
 ### Fonts (Fontconfig)
 
@@ -283,8 +269,8 @@ Local TeX tree for custom LaTeX packages and styles. The `run_once_texhash.sh` s
 
 Three additional external archives provide supplementary tools:
 
-- `~/模板/pandoc/pandoc-latex-template` — [Eisvogel](https://github.com/Wandmalfarbe/pandoc-latex-template) Pandoc LaTeX template for PDF generation
-- `~/项目/ppt-master` — Python PowerPoint generation toolkit
+- `~/Templates/pandoc/pandoc-latex-template` — [Eisvogel](https://github.com/Wandmalfarbe/pandoc-latex-template) Pandoc LaTeX template for PDF generation
+- `~/Projects/ppt-master` — Python PowerPoint generation toolkit
 - `~/knowledge` — Obsidian knowledge vault (personal notes, coding standards, development practices)
 
 ## Daily Workflow

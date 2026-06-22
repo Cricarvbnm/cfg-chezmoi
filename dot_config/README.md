@@ -11,7 +11,6 @@ Application configuration files mapped to `~/.config/` by chezmoi. Each subdirec
 | `fontconfig/conf.d/` | `~/.config/fontconfig/conf.d/` | CJK font preferences (serif/sans/mono) |
 | `opencode/` | `~/.config/opencode/` | OpenCode AI agent config: agents, skills, plugins |
 | `nvim/` | `~/.config/nvim/` | **External**: LazyVim config (git-repo from Codeberg) |
-| `private_kglobalshortcutsrc` | `~/.config/kglobalshortcutsrc` | KDE global shortcuts (Krohnkite tiling, volume, session) |
 
 ## Conventions
 
