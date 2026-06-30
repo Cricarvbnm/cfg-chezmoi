@@ -3,3 +3,7 @@
 
 # Include global AGENTS.md
 !.config/opencode/AGENTS.md
+
+{{- if eq .chezmoi.hostname "alec-gentoo" }}
+texmf
+{{- end }}
