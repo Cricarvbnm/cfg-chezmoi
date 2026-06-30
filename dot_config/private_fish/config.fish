@@ -14,5 +14,5 @@ if status is-interactive
     alias mv='mv --interactive --verbose'
     alias cp='cp --interactive --verbose'
 
-    source /usr/share/fzf/key-bindings.fish
+    fzf --fish | source
 end
