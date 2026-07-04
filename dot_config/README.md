@@ -6,10 +6,20 @@ Application configuration files mapped to `~/.config/` by chezmoi. Each subdirec
 
 | Directory/File | Target | Description |
 |---|---|---|
+| `btop/` | `~/.config/btop/` | System resource monitor: Catppuccin theme |
+| `fontconfig/conf.d/` | `~/.config/fontconfig/conf.d/` | CJK font preferences (serif/sans/mono) |
+| `fuzzel/` | `~/.config/fuzzel/` | Wayland app launcher: Catppuccin Macchiato theme |
 | `git/` | `~/.config/git/` | Git client config: user info, aliases, Delta diff pager |
 | `kitty/` | `~/.config/kitty/` | Kitty terminal: Catppuccin Macchiato theme |
-| `fontconfig/conf.d/` | `~/.config/fontconfig/conf.d/` | CJK font preferences (serif/sans/mono) |
+| `niri/` | `~/.config/niri/` | niri scrollable-tiling Wayland compositor |
 | `opencode/` | `~/.config/opencode/` | OpenCode AI agent config: agents, skills, plugins |
+| `private_fcitx5/` | `~/.config/fcitx5/` | Fcitx5 input method config (restrictive perms) |
+| `private_fish/` | `~/.config/fish/` | Fish shell config (restrictive perms) |
+| `swaylock/` | `~/.config/swaylock/` | Screen locker: Catppuccin Macchiato theme |
+| `swaync/` | `~/.config/swaync/` | Notification daemon: style + Catppuccin theme |
+| `tieba-sign/` | `~/.config/tieba-sign/` | Baidu Tieba auto sign-in (GPG-encrypted config) |
+| `uwsm/` | `~/.config/uwsm/` | Universal Wayland Session Manager |
+| `waybar/` | `~/.config/waybar/` | Wayland status bar: system modules + Catppuccin theme |
 | `nvim/` | `~/.config/nvim/` | **External**: LazyVim config (git-repo from Codeberg) |
 
 ## Conventions

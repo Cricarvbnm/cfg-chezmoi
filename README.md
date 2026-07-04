@@ -1,6 +1,6 @@
 # Dotfiles
 
-Personal configuration managed by [chezmoi](https://www.chezmoi.io/). Single-command setup for a fresh Arch Linux machine with KDE Plasma — terminal, editor, keyboard, fonts, Git, SSH, AI agent tooling, and TeX.
+Personal configuration managed by [chezmoi](https://www.chezmoi.io/). Designed for Gentoo / Arch Linux — terminal, editor, Wayland compositor (niri), keyboard, fonts, Git, SSH, AI agent tooling, TeX, and input method.
 
 ## Table of Contents
 
@@ -22,6 +22,12 @@ Personal configuration managed by [chezmoi](https://www.chezmoi.io/). Single-com
   - [Neovim](#neovim)
   - [OpenCode AI Agent](#opencode-ai-agent)
   - [AI Agent Skills](#ai-agent-skills)
+  - [niri Compositor](#niri-compositor)
+  - [Wayland Desktop Companions](#wayland-desktop-companions)
+  - [Fish Shell](#fish-shell)
+  - [Fcitx5 Input Method](#fcitx5-input-method)
+  - [btop System Monitor](#btop-system-monitor)
+  - [tieba-sign](#tieba-sign)
   - [TeX (texmf)](#tex-texmf)
   - [External Archives](#external-archives)
 - [Daily Workflow](#daily-workflow)
@@ -32,12 +38,21 @@ Personal configuration managed by [chezmoi](https://www.chezmoi.io/). Single-com
 
 | Application | Purpose | Config Location |
 |---|---|---|
+| [niri](https://github.com/YaLTeR/niri) | Scrollable-tiling Wayland compositor | `~/.config/niri/` |
+| [waybar](https://github.com/Alexays/Waybar) | Status bar with system modules | `~/.config/waybar/` |
+| [fuzzel](https://codeberg.org/dnkl/fuzzel) | Wayland app launcher | `~/.config/fuzzel/` |
+| [swaylock](https://github.com/swaywm/swaylock) | Screen locker | `~/.config/swaylock/` |
+| [SwayNC](https://github.com/ErikReider/SwayNotificationCenter) | Notification daemon | `~/.config/swaync/` |
+| [uwsm](https://github.com/Vladimir-csp/uwsm) | Wayland session manager | `~/.config/uwsm/` |
 | [kitty](https://sw.kovidgoyal.net/kitty/) | Terminal emulator | `~/.config/kitty/` |
 | [Neovim](https://neovim.io/) | Text editor (LazyVim) | `~/.config/nvim/` |
 | [Git](https://git-scm.com/) | Version control | `~/.config/git/` |
+| [Fish](https://fishshell.com/) | Friendly interactive shell | `~/.config/fish/` |
+| [Fcitx5](https://fcitx-im.org/) | Input method framework + Rime | `~/.config/fcitx5/` |
 | [kmonad](https://github.com/kmonad/kmonad) | Keyboard remapping | `~/.local/share/kmonad/` |
-| [Delta](https://github.com/dandavison/delta) | Git diff pager | `~/.config/git/delta.conf` |
+| [btop](https://github.com/aristocratos/btop) | System resource monitor | `~/.config/btop/` |
 | [OpenCode](https://opencode.ai/) | AI coding agent | `~/.config/opencode/` |
+| tieba-sign | Baidu Tieba auto sign-in | `~/.config/tieba-sign/` |
 | Fontconfig | System font preferences | `~/.config/fontconfig/` |
 | SSH | Client proxy | `~/.ssh/config` |
 | TeX (texmf) | Local TeX tree + font cache | `~/texmf/` |
@@ -45,18 +60,20 @@ Personal configuration managed by [chezmoi](https://www.chezmoi.io/). Single-com
 ## Tech Stack
 
 - **Manager**: [chezmoi](https://www.chezmoi.io/) — dotfile manager
-- **OS**: Arch Linux with KDE Plasma
-- **Theme**: [Catppuccin Macchiato](https://catppuccin.com/) (kitty)
+- **OS**: Gentoo Linux with niri (Wayland)
+- **Theme**: [Catppuccin Macchiato](https://catppuccin.com/) (kitty, fuzzel, swaylock, swaync, waybar, btop)
 - **Editor**: [LazyVim](https://www.lazyvim.org/) (personal fork on Codeberg)
+- **Shell**: [Fish](https://fishshell.com/)
+- **Input Method**: Fcitx5 + [Rime](https://rime.im/)
 - **AI Tools**: OpenCode + antigravity-awesome-skills + Understand-Anything
 
 ## Prerequisites
 
-Arch Linux with a minimal base install. The following should be available or will be installed separately:
+Gentoo / Arch Linux with a minimal base install. The following should be available or will be installed separately:
 
 - [chezmoi](https://www.chezmoi.io/install/) (the dotfile manager itself)
 - SSH key with access to [Codeberg](https://codeberg.org) (for external git repos)
-- `git`, `kitty`, `neovim`, `kmonad`, `texlive-core`
+- `git`, `kitty`, `neovim`, `kmonad`, `texlive`
 
 Optional but used by external components:
 - `pnpm` (for Understand-Anything plugin)
@@ -68,6 +85,9 @@ Optional but used by external components:
 ### 1. Install chezmoi
 
 ```bash
+# On Gentoo
+sudo emerge app-admin/chezmoi
+
 # On Arch Linux
 sudo pacman -S chezmoi
 ```
@@ -127,14 +147,38 @@ Files prefixed with `private_` get restrictive permissions: 600 for files, 700 f
 ```
 ~/.local/share/chezmoi/
 ├── dot_config/                          # → ~/.config/
+│   ├── btop/
+│   │   ├── btop.conf                    # System monitor config
+│   │   └── themes/                      # Catppuccin theme
+│   ├── fontconfig/conf.d/
+│   │   └── 50-prefered-fonts.conf       # CJK font preferences
+│   ├── fuzzel/
+│   │   └── fuzzel.ini                   # App launcher + Catppuccin theme
 │   ├── git/
 │   │   ├── config                       # Git aliases, user info
 │   │   └── delta.conf                   # Delta diff pager config
 │   ├── kitty/
 │   │   └── kitty.conf                   # Terminal + Catppuccin theme
-│   ├── fontconfig/conf.d/
-│   │   └── 50-prefered-fonts.conf       # CJK font preferences
+│   ├── niri/
+│   │   └── config.kdl                   # Wayland compositor keybindings + layout
 │   ├── opencode/                        # OpenCode AI agent config
+│   ├── private_fcitx5/
+│   │   ├── private_config               # Fcitx5 config (restrictive perms)
+│   │   └── private_profile              # Fcitx5 profile (restrictive perms)
+│   ├── private_fish/
+│   │   └── config.fish                  # Fish shell config (restrictive perms)
+│   ├── swaylock/
+│   │   └── config                       # Screen locker + Catppuccin theme
+│   ├── swaync/
+│   │   ├── config.json                  # Notification daemon config
+│   │   └── style.css                    # Notification CSS + Catppuccin theme
+│   ├── tieba-sign/
+│   │   └── encrypted_config.toml.asc    # GPG-encrypted sign-in credentials
+│   ├── uwsm/
+│   │   └── default-id                   # Session manager compositor ID
+│   ├── waybar/
+│   │   ├── config.jsonc                 # Status bar modules
+│   │   └── style.css                    # Catppuccin-themed bar
 │   └── nvim/                            # → External: LazyVim (git-repo)
 ├── dot_local/share/kmonad/
 │   ├── alechron-at.kbd                  # AT keyboard mapping
@@ -162,6 +206,8 @@ Defined in `.chezmoiexternal.toml`. These are downloaded separately and kept in 
 |---|---|---|---|
 | `~/.config/nvim` | `git-repo` | `ssh://git@codeberg.org/Alechron/cfg-lazyvim.git` | 168h |
 | `~/knowledge` | `git-repo` | `ssh://git@codeberg.org/Alechron/knowledge-vault.git` | 168h |
+| `~/.local/share/fcitx5/rime` | `archive` | GitHub: iDvel/rime-ice | 168h |
+| `~/.local/share/fcitx5/rime/cn_dicts/moegirl.dict.yaml` | `file` | GitHub: outloudvi/mw2fcitx | 168h |
 | `~/.agents/Understand-Anything` | `archive` | GitHub: Lum1104/Understand-Anything | 168h |
 | `~/.agents/antigravity-awesome-skills` | `archive` | GitHub: sickn33/antigravity-awesome-skills | 168h |
 | `~/Templates/pandoc/pandoc-latex-template` | `archive` | GitHub: Wandmalfarbe/pandoc-latex-template | 168h |
@@ -258,6 +304,56 @@ Two layers of AI skills:
 2. **exact_skills/** — Per-skill symlinks that selectively enable individual skills from the collection. Currently includes agent-browser, async-python-patterns, bash-linux, and others.
 
 3. **Understand-Anything** (external archive) — Plugin for codebase understanding and knowledge graph generation.
+
+### niri Compositor
+
+**File**: `~/.config/niri/config.kdl`
+
+Scrollable-tiling Wayland compositor with:
+- Input device setup (keyboard, touchpad, mouse, trackpoint)
+- Per-output mode and scaling (`eDP-1` @ 1920x1080@120Hz 1.5x, `HDMI-A-3` @ 2.5x)
+- Layout with gaps, focus ring, borders, and shadows
+- Full keybinding suite: workspace navigation, window management, column operations
+- Spawn-at-startup: swaync, swaybg, waybar, fcitx5, PipeWire, network/bluetooth applets
+- Screenshot integration, clipboard history via cliphist, Catppuccin cursor theme
+
+### Wayland Desktop Companions
+
+**fuzzel** (`~/.config/fuzzel/fuzzel.ini`): Catppuccin Macchiato-themed app launcher, launches via `Mod+D`.
+
+**waybar** (`~/.config/waybar/`): Top bar with niri workspace switcher (kanji icons), clock with calendar, system tray, privacy indicator, idle inhibitor, network, pulseaudio, backlight, CPU temp, CPU/memory usage, power profiles, UPower devices, and battery with charging states. Catppuccin-themed via `style.css`.
+
+**swaylock** (`~/.config/swaylock/config`): Screen locker with Catppuccin Macchiato colors, clock display, blur effect, and vignette. Triggered by `swayidle` after 5min idle.
+
+**SwayNC** (`~/.config/swaync/`): Notification daemon with Catppuccin Macchiato themed CSS. Minimal config, `Mod+N` toggles notification panel.
+
+**uwsm** (`~/.config/uwsm/default-id`): Universal Wayland Session Manager, set to launch niri.
+
+### Fish Shell
+
+**File**: `~/.config/fish/config.fish` (restrictive permissions via `private_` prefix)
+
+Fish shell configuration with custom aliases and environment setup.
+
+### Fcitx5 Input Method
+
+**Directory**: `~/.config/fcitx5/` (restrictive permissions via `private_` prefix)
+
+Fcitx5 configuration with [Rime](https://rime.im/) engine. The Rime data directory (`~/.local/share/fcitx5/rime`) is managed externally:
+- **rime-ice** — Rime input schema collection (archive from GitHub)
+- **moegirl.dict.yaml** — Moegirl wiki dictionary (file from GitHub)
+
+### btop System Monitor
+
+**File**: `~/.config/btop/btop.conf` + themes
+
+Terminal system resource monitor (CPU, memory, network, processes) with Catppuccin Macchiato theme. Launchable from waybar CPU/memory module click.
+
+### tieba-sign
+
+**File**: `~/.config/tieba-sign/encrypted_config.toml.asc`
+
+Baidu Tieba automatic sign-in tool. Configuration file is GPG-encrypted at rest. Decryption requires the GPG key `542E03119CACFA00`.
 
 ### TeX (texmf)
 
