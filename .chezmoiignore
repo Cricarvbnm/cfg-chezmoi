@@ -6,8 +6,24 @@
 !.config/opencode/AGENTS.md
 {{ end }}
 
-# Personal configs — only deployed when chezmoi data.personal is true
-{{ if not .personal }}
+# SSH proxy
+{{ if not .proxy }}
 .ssh/config
+{{ end }}
+
+# Tieba sign-in (desktop + personal)
+{{ if not (and .personal .desktop) }}
 .config/tieba-sign/encrypted_config.toml.asc
+{{ end }}
+
+# Custom DE (niri + Wayland companions)
+{{ if not .custom_de }}
+.config/niri/config.kdl
+.config/waybar/config.jsonc
+.config/waybar/style.css
+.config/fuzzel/fuzzel.ini
+.config/swaylock/config
+.config/swaync/config.json
+.config/swaync/style.css
+.config/uwsm/default-id
 {{ end }}

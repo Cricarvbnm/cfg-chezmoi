@@ -21,4 +21,4 @@ Local addresses (`.local` domain) bypass the proxy.
 
 - `private_` prefix in source state triggers restrictive permissions on target (700 dirs, 600 files)
 - Never commit actual private keys — they should be generated per-machine
-- Selectively deployed via `.chezmoiignore` template — only when `data.personal = true` in `chezmoi.toml`
+- Selectively deployed via `.chezmoiignore` template — only when `data.proxy = true` in `chezmoi.toml`

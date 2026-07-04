@@ -8,4 +8,4 @@ Baidu Tieba automatic sign-in tool.
 
 GPG-encrypted at rest. Decryption requires the GPG key `542E03119CACFA00`. The plaintext config is not committed to the repository.
 
-Selectively deployed via `.chezmoiignore` template — only when `data.personal = true` in `chezmoi.toml`.
+Selectively deployed via `.chezmoiignore` template — only when `data.personal = true` and `data.desktop = true` in `chezmoi.toml`.

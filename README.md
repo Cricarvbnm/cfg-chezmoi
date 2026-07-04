@@ -238,28 +238,31 @@ chezmoi can execute scripts during apply. This repo uses `run_once_` scripts (ex
 
 ### Machine-Specific Configuration
 
-Personal configs are gated behind `data.personal = true` in `~/.config/chezmoi/chezmoi.toml`. Three mechanisms use this variable:
+Feature flags in `~/.config/chezmoi/chezmoi.toml` control selective deployment via three mechanisms:
 
-**`.chezmoiignore` template** — for entire files deployed only on personal machines:
+| Flag | Purpose | Controlled configs |
+|------|---------|-------------------|
+| `personal` | Personal identity + knowledge | git `[user]`, knowledge vault, opencode/AGENTS.md |
+| `desktop` | Daily desktop machine | tieba-sign (requires `personal && desktop`) |
+| `proxy` | Network proxy available | SSH proxy config |
+| `custom_de` | Custom desktop environment | niri, waybar, fuzzel, swaylock, swaync, uwsm |
 
-- `.ssh/config` — SSH proxy rules
-- `.config/tieba-sign/encrypted_config.toml.asc` — Baidu Tieba credentials
-- `.config/opencode/AGENTS.md` — AI agent behavior rules
-
-**`.tmpl` conditional** — for files where only specific sections are personal:
-
-- `.config/git/config.tmpl` — `[user]` section (email/name) is conditional; aliases and settings are universal
-
-**`.chezmoiexternal.toml` template** — the external definition file is natively a template:
-
-- `~/knowledge` — Obsidian knowledge vault (personal only)
-
-To opt in on a machine, add to `chezmoi.toml`:
+To opt in on a machine:
 
 ```toml
+# ~/.config/chezmoi/chezmoi.toml
 [data]
-    personal = true
+    personal  = true
+    desktop   = true
+    proxy     = true
+    custom_de = true
 ```
+
+**`.chezmoiignore` template** — ignores entire files when their flag is false (`.custom_de` controls 8 niri companion files).
+
+**`.tmpl` conditional** — wraps granular sections (git `[user]`).
+
+**`.chezmoiexternal.toml` template** — conditional external repositories (knowledge vault).
 
 See [chezmoi template data](https://www.chezmoi.io/user-guide/templating/#template-data) for details.
 
