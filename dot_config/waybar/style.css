@@ -1,0 +1,201 @@
+/* Catppuccin Macchiato — https://github.com/catppuccin/waybar (MIT) */
+@define-color base      #24273a;
+@define-color mantle    #1e2030;
+@define-color crust     #181926;
+
+@define-color text      #cad3f5;
+@define-color subtext0  #a5adcb;
+@define-color subtext1  #b8c0e0;
+
+@define-color surface0  #363a4f;
+@define-color surface1  #494d64;
+@define-color surface2  #5b6078;
+
+@define-color overlay0  #6e738d;
+@define-color overlay1  #8087a2;
+@define-color overlay2  #939ab7;
+
+@define-color blue      #8aadf4;
+@define-color lavender  #b7bdf8;
+@define-color sapphire  #7dc4e4;
+@define-color sky       #91d7e3;
+@define-color teal      #8bd5ca;
+@define-color green     #a6da95;
+@define-color yellow    #eed49f;
+@define-color peach     #f5a97f;
+@define-color maroon    #ee99a0;
+@define-color red       #ed8796;
+@define-color mauve     #c6a0f6;
+@define-color pink      #f5bde6;
+@define-color flamingo  #f0c6c6;
+@define-color rosewater #f4dbd6;
+
+/* ── Global bar ── */
+* {
+    border: none;
+    border-radius: 0;
+    font-family: "Noto Sans CJK SC", "Noto Sans", sans-serif;
+    font-size: 13px;
+    min-height: 0;
+}
+
+window#waybar {
+    background: transparent;
+    color: @text;
+}
+
+#waybar {
+    background: alpha(@base, 0.85);
+}
+
+/* ── Module groups ── */
+.modules-left,
+.modules-center,
+.modules-right {
+    background: alpha(@surface0, 0.7);
+    border-radius: 8px;
+    margin: 4px 0;
+    padding: 0 8px;
+}
+
+/* ── Workspaces ── */
+#workspaces {
+    padding: 0 4px;
+}
+
+#workspaces button {
+    padding: 0 6px;
+    margin: 0 2px;
+    color: @overlay1;
+    background: transparent;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+}
+
+#workspaces button:hover {
+    background: alpha(@surface2, 0.5);
+    color: @text;
+    box-shadow: none;
+}
+
+#workspaces button.active {
+    background: alpha(@lavender, 0.25);
+    color: @lavender;
+}
+
+#workspaces button.urgent {
+    background: alpha(@red, 0.3);
+    color: @red;
+}
+
+/* ── Labels ── */
+label {
+    padding: 0 4px;
+}
+
+/* ── Clock ── */
+#clock {
+    color: @rosewater;
+    font-weight: 600;
+    padding: 0 12px;
+}
+
+/* ── Privacy ── */
+#privacy {
+    color: @red;
+}
+
+/* ── Idle inhibitor ── */
+#idle_inhibitor {
+    color: @teal;
+}
+
+#idle_inhibitor.activated {
+    color: @red;
+}
+
+/* ── Power profiles ── */
+#power-profiles-daemon {
+    color: @mauve;
+}
+
+/* ── Network ── */
+#network {
+    color: @sapphire;
+}
+
+/* ── Audio ── */
+#pulseaudio {
+    color: @green;
+}
+
+/* ── Backlight ── */
+#backlight {
+    color: @yellow;
+}
+
+/* ── Temperature ── */
+#temperature {
+    color: @peach;
+}
+
+#temperature.critical {
+    color: @red;
+}
+
+/* ── CPU ── */
+#cpu {
+    color: @blue;
+}
+
+/* ── Memory ── */
+#memory {
+    color: @sky;
+}
+
+/* ── UPower (external device batteries) ── */
+#upower {
+    color: @sapphire;
+}
+
+/* ── Battery ── */
+#battery {
+    color: @yellow;
+}
+
+#battery.warning {
+    color: @peach;
+}
+
+#battery.critical {
+    color: @red;
+}
+
+#battery.charging {
+    color: @green;
+}
+
+/* ── Tray ── */
+#tray {
+    padding: 0 4px;
+}
+
+#tray > .passive {
+    -gtk-icon-effect: dim;
+}
+
+#tray > .needs-attention {
+    -gtk-icon-effect: highlight;
+}
+
+/* ── Tooltips ── */
+tooltip {
+    background: @surface0;
+    border: 1px solid @surface2;
+    border-radius: 8px;
+}
+
+tooltip label {
+    color: @text;
+    padding: 4px 8px;
+}
