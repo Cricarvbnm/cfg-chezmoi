@@ -13,6 +13,7 @@ if status is-interactive
 
     alias mv='mv --interactive --verbose'
     alias cp='cp --interactive --verbose'
+    alias rm='rm --verbose'
 
     fzf --fish | source
 end
