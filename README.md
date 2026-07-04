@@ -14,24 +14,6 @@ Personal configuration managed by [chezmoi](https://www.chezmoi.io/). Designed f
   - [External Repositories](#external-repositories)
   - [Run Scripts](#run-scripts)
 - [What's Configured](#whats-configured)
-  - [Git](#git)
-  - [Kitty Terminal](#kitty-terminal)
-  - [Fonts (Fontconfig)](#fonts-fontconfig)
-  - [kmonad Keyboard Remapping](#kmonad-keyboard-remapping)
-  - [SSH](#ssh)
-  - [Neovim](#neovim)
-  - [OpenCode AI Agent](#opencode-ai-agent)
-  - [AI Agent Skills](#ai-agent-skills)
-  - [niri Compositor](#niri-compositor)
-  - [Wayland Desktop Companions](#wayland-desktop-companions)
-  - [Fish Shell](#fish-shell)
-  - [Fcitx5 Input Method](#fcitx5-input-method)
-  - [btop System Monitor](#btop-system-monitor)
-  - [tieba-sign](#tieba-sign)
-  - [TeX (texmf)](#tex-texmf)
-  - [External Archives](#external-archives)
-- [Daily Workflow](#daily-workflow)
-- [Troubleshooting](#troubleshooting)
 - [License](#license)
 
 ## Applications Configured
@@ -60,7 +42,7 @@ Personal configuration managed by [chezmoi](https://www.chezmoi.io/). Designed f
 ## Tech Stack
 
 - **Manager**: [chezmoi](https://www.chezmoi.io/) — dotfile manager
-- **OS**: Gentoo Linux with niri (Wayland)
+- **Compositor**: [niri](https://github.com/YaLTeR/niri) — scrollable-tiling Wayland compositor
 - **Theme**: [Catppuccin Macchiato](https://catppuccin.com/) (kitty, fuzzel, swaylock, swaync, waybar, btop)
 - **Editor**: [LazyVim](https://www.lazyvim.org/) (personal fork on Codeberg)
 - **Shell**: [Fish](https://fishshell.com/)
@@ -69,34 +51,65 @@ Personal configuration managed by [chezmoi](https://www.chezmoi.io/). Designed f
 
 ## Prerequisites
 
-Gentoo / Arch Linux with a minimal base install. The following should be available or will be installed separately:
+A Linux system with a Wayland session. The following packages should be available (package names vary by distribution):
 
-- [chezmoi](https://www.chezmoi.io/install/) (the dotfile manager itself)
+**Core:**
+- [chezmoi](https://www.chezmoi.io/install/) — the dotfile manager itself
+- `git`
 - SSH key with access to [Codeberg](https://codeberg.org) (for external git repos)
-- `git`, `kitty`, `neovim`, `kmonad`, `texlive`
 
-Optional but used by external components:
+**Desktop (Wayland):**
+- `niri` — compositor
+- `waybar` — status bar
+- `fuzzel` — app launcher
+- `swaylock` — screen locker
+- `swaync` — notification daemon
+- `uwsm` — session manager
+- `swaybg` — wallpaper
+- `swayidle` — idle management
+
+**Terminal & Shell:**
+- `kitty` — terminal emulator
+- `fish` — shell
+- `kmonad` — keyboard remapping
+
+**Input:**
+- `fcitx5` — input method framework
+
+**Fonts:**
+- `noto-cjk` (Noto Serif CJK SC, Noto Sans CJK SC)
+- `fantasque-sans-mono` / `nerd-fonts` (FantasqueSansM Nerd Font)
+- Catppuccin cursor theme
+
+**Media & Hardware:**
+- `pipewire`, `wireplumber` — audio
+- `playerctl` — media key support
+- `brightnessctl` — backlight control
+- `network-manager-applet` — network tray
+- `blueman-applet` — bluetooth tray
+- `polkit-gnome` — authentication agent
+
+**Clipboard:**
+- `cliphist`, `wl-clipboard` (`wl-paste`, `wl-copy`)
+
+**Editor & Documents:**
+- `neovim` (LazyVim)
+- `texlive` — LaTeX distribution
+- `pandoc` — document conversion (needed by pandoc-latex-template external)
+
+**AI Tools:**
 - `pnpm` (for Understand-Anything plugin)
-- `pandoc` (for document conversion)
-- `texhash` (part of texlive)
 
 ## Getting Started
 
 ### 1. Install chezmoi
 
-```bash
-# On Gentoo
-sudo emerge app-admin/chezmoi
-
-# On Arch Linux
-sudo pacman -S chezmoi
-```
+Follow the [official installation guide](https://www.chezmoi.io/install/) for your distribution.
 
 ### 2. Initialize the dotfiles
 
 ```bash
 # Clone and apply in one command
-# FIXME: Replace with your actual Codeberg repo path
 chezmoi init --apply Alechron/cfg-chezmoi
 ```
 
@@ -224,227 +237,59 @@ chezmoi can execute scripts during apply. This repo uses `run_once_` scripts (ex
 
 ## What's Configured
 
-### Git
-
-**File**: `~/.config/git/config` + `~/.config/git/delta.conf`
-
-- Default branch: `main`
-- User: Alec &lt;alechron@outlook.com&gt;
-- Short aliases: `a` (add), `aa` (add --all), `s` (status --short --branch), `sl` (status), `c` (commit), `ca` (commit --all), `cu` (commit --amend)
-- Uses [Delta](https://github.com/dandavison/delta) for syntax-highlighted diffs
-
-### Kitty Terminal
-
-**File**: `~/.config/kitty/kitty.conf`
-
-- [Catppuccin Macchiato](https://catppuccin.com/) color theme
-- Theme loaded via `include current-theme.conf` (managed by the kitty [themes kitten](https://sw.kovidgoyal.net/kitty/kittens/themes/))
-- All other settings use kitty defaults
-
-### Fonts (Fontconfig)
-
-**File**: `~/.config/fontconfig/conf.d/50-prefered-fonts.conf`
-
-Sets preferred fonts for CJK compatibility:
-
-| Category | Preferred Font |
-|---|---|
-| Serif | Noto Serif CJK SC |
-| Sans-serif | Noto Sans CJK SC |
-| Monospace | Sarasa Fixed SC, fallback FantasqueSansM Nerd Font |
-
-### kmonad Keyboard Remapping
-
-**Directory**: `~/.local/share/kmonad/`
-
-Two keyboard configurations for [kmonad](https://github.com/kmonad/kmonad):
-
-- `alechron-at.kbd` — AT-translated keyboard mapping (laptop built-in)
-- `alechron-usb.kbd` — USB keyboard mapping (specific port)
-
-A systemd service reads configs from `/etc/kmonad/` (symlink to this directory).
-
-### SSH
-
-**File**: `~/.ssh/config`
-
-All non-local connections are proxied through `localhost:7890`:
-
-```
-Host !*.local *
-    ProxyCommand nc -Xconnect -x localhost:7890 %h %p
-```
-
-### Neovim
-
-**Directory**: `~/.config/nvim/` (external)
-
-Personal fork of [LazyVim](https://www.lazyvim.org/) hosted on Codeberg. Includes custom plugins, keybindings, and language support. Managed as a `git-repo` external — pull updates via `chezmoi apply --refresh-externals`.
-
-### OpenCode AI Agent
-
-**Directory**: `~/.config/opencode/`
-
-Configuration for the [OpenCode](https://opencode.ai/) AI coding agent:
-
-- `opencode.json` — Core agent configuration
-- `oh-my-opencode-slim.json` — Plugin configuration
-- `tui.json` — Terminal UI preferences
-- `AGENTS.md` — Agent instructions (explicitly included via `.chezmoiignore`)
-- `package.json` / `package-lock.json` — Agent plugin dependencies
-
-### AI Agent Skills
-
-**Directory**: `~/.agents/`
-
-Two layers of AI skills:
-
-1. **antigravity-awesome-skills** (external archive) — Base skill collection from GitHub. Includes skills for Python, Django, FastAPI, Go, Git, documentation, testing, presentations, and more.
-
-2. **exact_skills/** — Per-skill symlinks that selectively enable individual skills from the collection. Currently includes agent-browser, async-python-patterns, bash-linux, and others.
-
-3. **Understand-Anything** (external archive) — Plugin for codebase understanding and knowledge graph generation.
-
-### niri Compositor
-
-**File**: `~/.config/niri/config.kdl`
-
-Scrollable-tiling Wayland compositor with:
-- Input device setup (keyboard, touchpad, mouse, trackpoint)
-- Per-output mode and scaling (`eDP-1` @ 1920x1080@120Hz 1.5x, `HDMI-A-3` @ 2.5x)
-- Layout with gaps, focus ring, borders, and shadows
-- Full keybinding suite: workspace navigation, window management, column operations
-- Spawn-at-startup: swaync, swaybg, waybar, fcitx5, PipeWire, network/bluetooth applets
-- Screenshot integration, clipboard history via cliphist, Catppuccin cursor theme
-
-### Wayland Desktop Companions
-
-**fuzzel** (`~/.config/fuzzel/fuzzel.ini`): Catppuccin Macchiato-themed app launcher, launches via `Mod+D`.
-
-**waybar** (`~/.config/waybar/`): Top bar with niri workspace switcher (kanji icons), clock with calendar, system tray, privacy indicator, idle inhibitor, network, pulseaudio, backlight, CPU temp, CPU/memory usage, power profiles, UPower devices, and battery with charging states. Catppuccin-themed via `style.css`.
-
-**swaylock** (`~/.config/swaylock/config`): Screen locker with Catppuccin Macchiato colors, clock display, blur effect, and vignette. Triggered by `swayidle` after 5min idle.
-
-**SwayNC** (`~/.config/swaync/`): Notification daemon with Catppuccin Macchiato themed CSS. Minimal config, `Mod+N` toggles notification panel.
-
-**uwsm** (`~/.config/uwsm/default-id`): Universal Wayland Session Manager, set to launch niri.
-
-### Fish Shell
-
-**File**: `~/.config/fish/config.fish` (restrictive permissions via `private_` prefix)
-
-Fish shell configuration with custom aliases and environment setup.
-
-### Fcitx5 Input Method
-
-**Directory**: `~/.config/fcitx5/` (restrictive permissions via `private_` prefix)
-
-Fcitx5 configuration with [Rime](https://rime.im/) engine. The Rime data directory (`~/.local/share/fcitx5/rime`) is managed externally:
-- **rime-ice** — Rime input schema collection (archive from GitHub)
-- **moegirl.dict.yaml** — Moegirl wiki dictionary (file from GitHub)
-
-### btop System Monitor
-
-**File**: `~/.config/btop/btop.conf` + themes
-
-Terminal system resource monitor (CPU, memory, network, processes) with Catppuccin Macchiato theme. Launchable from waybar CPU/memory module click.
-
-### tieba-sign
-
-**File**: `~/.config/tieba-sign/encrypted_config.toml.asc`
-
-Baidu Tieba automatic sign-in tool. Configuration file is GPG-encrypted at rest. Decryption requires the GPG key `542E03119CACFA00`.
-
-### TeX (texmf)
-
-**Directory**: `~/texmf/`
-
-Local TeX tree for custom LaTeX packages and styles. The `run_once_texhash.sh` script refreshes the TeX filename database on first apply.
-
-### External Archives
-
-Three additional external archives provide supplementary tools:
-
-- `~/Templates/pandoc/pandoc-latex-template` — [Eisvogel](https://github.com/Wandmalfarbe/pandoc-latex-template) Pandoc LaTeX template for PDF generation
-- `~/Projects/ppt-master` — Python PowerPoint generation toolkit
-- `~/knowledge` — Obsidian knowledge vault (personal notes, coding standards, development practices)
-
-## Daily Workflow
-
-```bash
-# Check what's changed
-chezmoi status
-
-# Preview changes before applying
-chezmoi diff
-
-# Apply changes (with confirmation on interactive mode)
-chezmoi apply
-
-# Add a new config file
-chezmoi add ~/.config/some-app/config.toml
-
-# Edit a managed file
-chezmoi edit ~/.config/some-app/config.toml
-
-# Refresh external sources (e.g., after a week)
-chezmoi apply --refresh-externals
-```
-
-**Adding new configurations:**
-
-1. Create the file directly in the `dot_*` source directories
-2. Use `private_` prefix for sensitive files (SSH keys, tokens)
-3. Preview with `chezmoi diff`
-4. Apply with `chezmoi apply`
-
-**Machine-specific files:**
-
-For files that differ between machines, use chezmoi templates (`{{ if eq .chezmoi.hostname "work" }}...`) or separate branches.
-
-## Troubleshooting
-
-### chezmoi apply shows "R" (run) status persistently
-
-This is normal for `run_` scripts — they execute on every apply. This repo uses `run_once_` scripts that only execute the first time. If you see `R` for `pnpm_sync.sh`, it was already converted to `run_once_`.
-
-### External git repos won't clone
-
-Make sure your SSH key has access to `codeberg.org`:
-
-```bash
-ssh -T git@codeberg.org
-```
-
-Should reply: `Hi Alechron! You've successfully authenticated...`
-
-### Neovim not working after apply
-
-The Neovim config is an external `git-repo`. Force a refresh:
-
-```bash
-chezmoi apply --refresh-externals
-```
-
-Then run `nvim` — LazyVim will bootstrap its plugins on first launch.
-
-### kmonad service not picking up config changes
-
-The systemd service reads from `/etc/kmonad/` which should be symlinked to `~/.local/share/kmonad/`. Restart the service after changes:
-
-```bash
-sudo systemctl restart kmonad
-```
-
-### TeX packages not found
-
-Run the texhash script:
-
-```bash
-texhash ~/texmf
-```
-
-Or re-apply chezmoi to trigger `run_once_texhash.sh`.
+Detailed documentation lives in each config directory. Click through for specifics.
+
+### Desktop (Wayland)
+
+| App | Config | Docs |
+|-----|--------|------|
+| niri | `~/.config/niri/config.kdl` | [README](dot_config/niri/README.md) |
+| waybar | `~/.config/waybar/` | [README](dot_config/waybar/README.md) |
+| fuzzel | `~/.config/fuzzel/fuzzel.ini` | [README](dot_config/fuzzel/README.md) |
+| swaylock | `~/.config/swaylock/config` | [README](dot_config/swaylock/README.md) |
+| SwayNC | `~/.config/swaync/` | [README](dot_config/swaync/README.md) |
+| uwsm | `~/.config/uwsm/default-id` | [README](dot_config/uwsm/README.md) |
+
+### Terminal & Shell
+
+| App | Config | Docs |
+|-----|--------|------|
+| kitty | `~/.config/kitty/kitty.conf` | [README](dot_config/kitty/README.md) |
+| fish | `~/.config/fish/config.fish` | [README](dot_config/private_fish/README.md) |
+
+### Editor & System
+
+| App | Config | Docs |
+|-----|--------|------|
+| Neovim | `~/.config/nvim/` (external) | [LazyVim](https://www.lazyvim.org/) |
+| Git | `~/.config/git/` | [README](dot_config/git/README.md) |
+| btop | `~/.config/btop/btop.conf` | [README](dot_config/btop/README.md) |
+
+### Input
+
+| App | Config | Docs |
+|-----|--------|------|
+| Fcitx5 + Rime | `~/.config/fcitx5/` | [README](dot_config/private_fcitx5/README.md) |
+| kmonad | `~/.local/share/kmonad/` | [README](dot_local/share/kmonad/README.md) |
+| Fontconfig | `~/.config/fontconfig/` | [README](dot_config/fontconfig/README.md) |
+
+### AI & Automation
+
+| App | Config | Docs |
+|-----|--------|------|
+| OpenCode | `~/.config/opencode/` | [README](dot_config/opencode/README.md) |
+| Agent Skills | `~/.agents/` | [README](dot_agents/README.md) |
+| tieba-sign | `~/.config/tieba-sign/` | [README](dot_config/tieba-sign/README.md) |
+
+### Documents
+
+| App | Config | Docs |
+|-----|--------|------|
+| TeX (texmf) | `~/texmf/` | [README](texmf/README.md) |
+| pandoc template | `~/Templates/pandoc/` (external) | [Eisvogel](https://github.com/Wandmalfarbe/pandoc-latex-template) |
+| ppt-master | `~/Projects/ppt-master/` (external) | [ppt-master](https://github.com/hugohe3/ppt-master) |
+| SSH | `~/.ssh/config` | [README](private_dot_ssh/README.md) |
+| knowledge vault | `~/knowledge/` (external) | Obsidian vault
 
 ## License
 
