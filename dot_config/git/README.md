@@ -6,15 +6,17 @@ Git client configuration: user identity, command aliases, and diff pager.
 
 | File | Purpose |
 |------|---------|
-| `config` | Git user info, init settings, command aliases |
+| `config.tmpl` | Git user info (conditional), init settings, command aliases |
 | `delta.conf` | [Delta](https://github.com/dandavison/delta) diff pager config (included via `[include]`) |
 
 ## Configuration
 
-### git/config
+### git/config.tmpl
+
+Uses chezmoi template to deploy `[user]` section only on personal machines (hostname containing "alec").
 
 - **Default branch**: `main`
-- **User**: Alec (`alechron@outlook.com`)
+- **User** (personal only): Alec (`alechron@outlook.com`)
 - **Aliases**:
   - `a` → `add`, `aa` → `add --all`
   - `s` → `status --short --branch`, `sl` → `status`

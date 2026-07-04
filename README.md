@@ -13,6 +13,7 @@ Personal configuration managed by [chezmoi](https://www.chezmoi.io/). Designed f
   - [Directory Structure](#directory-structure)
   - [External Repositories](#external-repositories)
   - [Run Scripts](#run-scripts)
+  - [Machine-Specific Configuration](#machine-specific-configuration)
 - [What's Configured](#whats-configured)
 - [License](#license)
 
@@ -168,7 +169,7 @@ Files prefixed with `private_` get restrictive permissions: 600 for files, 700 f
 │   ├── fuzzel/
 │   │   └── fuzzel.ini                   # App launcher + Catppuccin theme
 │   ├── git/
-│   │   ├── config                       # Git aliases, user info
+│   │   ├── config.tmpl                  # Git aliases, user info (conditional)
 │   │   └── delta.conf                   # Delta diff pager config
 │   ├── kitty/
 │   │   └── kitty.conf                   # Terminal + Catppuccin theme
@@ -207,7 +208,7 @@ Files prefixed with `private_` get restrictive permissions: 600 for files, 700 f
 │   ├── run_once_texhash.sh              # TeX font cache refresh
 │   └── tex/latex/                       # Local TeX packages
 ├── .chezmoiexternal.toml                # External dependency definitions
-├── .chezmoiignore                       # Files excluded from target
+├── .chezmoiignore                       # Selective deployment rules (template)
 └── README.md
 ```
 
@@ -218,7 +219,7 @@ Defined in `.chezmoiexternal.toml`. These are downloaded separately and kept in 
 | Target Path | Type | Source | Refresh |
 |---|---|---|---|
 | `~/.config/nvim` | `git-repo` | `ssh://git@codeberg.org/Alechron/cfg-lazyvim.git` | 168h |
-| `~/knowledge` | `git-repo` | `ssh://git@codeberg.org/Alechron/knowledge-vault.git` | 168h |
+| `~/knowledge` | `git-repo` | `ssh://git@codeberg.org/Alechron/knowledge-vault.git` | 168h (personal only) |
 | `~/.local/share/fcitx5/rime` | `archive` | GitHub: iDvel/rime-ice | 168h |
 | `~/.local/share/fcitx5/rime/cn_dicts/moegirl.dict.yaml` | `file` | GitHub: outloudvi/mw2fcitx | 168h |
 | `~/.agents/Understand-Anything` | `archive` | GitHub: Lum1104/Understand-Anything | 168h |
@@ -234,6 +235,26 @@ chezmoi can execute scripts during apply. This repo uses `run_once_` scripts (ex
 |---|---|
 | `texmf/run_once_texhash.sh` | Runs `texhash ~/texmf` to index local TeX packages |
 | `dot_agents/.../run_once_pnpm_sync.sh` | Runs `pnpm install` in Understand-Anything plugin |
+
+### Machine-Specific Configuration
+
+Some configs are personal and excluded from shared deployment using two mechanisms:
+
+**`.chezmoiignore` template** — for entire files that should only appear on personal machines (hostname containing "alec"):
+
+- `.ssh/config` — SSH proxy rules
+- `.config/tieba-sign/encrypted_config.toml.asc` — Baidu Tieba credentials
+- `.config/opencode/AGENTS.md` — AI agent behavior rules
+
+**`.tmpl` conditional** — for files where only specific sections are personal:
+
+- `.config/git/config.tmpl` — `[user]` section (email/name) is conditional; aliases and settings are universal
+
+**`.chezmoiexternal.toml` template** — the external definition file is itself a template, enabling conditional external repositories:
+
+- `~/knowledge` — Obsidian knowledge vault (personal only)
+
+See [chezmoi machine-to-machine differences](https://www.chezmoi.io/user-guide/manage-machine-to-machine-differences/) for details.
 
 ## What's Configured
 

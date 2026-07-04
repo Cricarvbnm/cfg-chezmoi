@@ -7,3 +7,5 @@ Baidu Tieba automatic sign-in tool.
 **File**: `encrypted_config.toml.asc`
 
 GPG-encrypted at rest. Decryption requires the GPG key `542E03119CACFA00`. The plaintext config is not committed to the repository.
+
+Selectively deployed via `.chezmoiignore` template — only on machines with "alec" in hostname.

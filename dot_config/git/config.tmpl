@@ -1,9 +1,11 @@
 [init]
     defaultBranch = "main"
 
+{{ if contains "alec" .chezmoi.hostname }}
 [user]
     email = "alechron@outlook.com"
     name = "Alec"
+{{ end }}
 
 [alias]
     a = "add"

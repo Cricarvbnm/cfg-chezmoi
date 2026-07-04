@@ -3,10 +3,12 @@ type = "git-repo"
 url = "ssh://git@codeberg.org/Alechron/cfg-lazyvim.git"
 refreshPeriod = "168h"
 
+{{ if contains "alec" .chezmoi.hostname }}
 ["knowledge"]
 type = "git-repo"
 url = "ssh://git@codeberg.org/Alechron/knowledge-vault.git"
 refreshPeriod = "168h"
+{{ end }}
 
 [".local/share/fcitx5/rime"]
 type = "archive"
