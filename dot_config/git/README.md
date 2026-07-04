@@ -13,7 +13,7 @@ Git client configuration: user identity, command aliases, and diff pager.
 
 ### git/config.tmpl
 
-Uses chezmoi template to deploy `[user]` section only on personal machines (hostname containing "alec").
+Uses chezmoi template to deploy `[user]` section only on personal machines (when `data.personal = true` in `chezmoi.toml`).
 
 - **Default branch**: `main`
 - **User** (personal only): Alec (`alechron@outlook.com`)

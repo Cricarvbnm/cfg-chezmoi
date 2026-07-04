@@ -238,9 +238,9 @@ chezmoi can execute scripts during apply. This repo uses `run_once_` scripts (ex
 
 ### Machine-Specific Configuration
 
-Some configs are personal and excluded from shared deployment using two mechanisms:
+Personal configs are gated behind `data.personal = true` in `~/.config/chezmoi/chezmoi.toml`. Three mechanisms use this variable:
 
-**`.chezmoiignore` template** — for entire files that should only appear on personal machines (hostname containing "alec"):
+**`.chezmoiignore` template** — for entire files deployed only on personal machines:
 
 - `.ssh/config` — SSH proxy rules
 - `.config/tieba-sign/encrypted_config.toml.asc` — Baidu Tieba credentials
@@ -250,11 +250,18 @@ Some configs are personal and excluded from shared deployment using two mechanis
 
 - `.config/git/config.tmpl` — `[user]` section (email/name) is conditional; aliases and settings are universal
 
-**`.chezmoiexternal.toml` template** — the external definition file is itself a template, enabling conditional external repositories:
+**`.chezmoiexternal.toml` template** — the external definition file is natively a template:
 
 - `~/knowledge` — Obsidian knowledge vault (personal only)
 
-See [chezmoi machine-to-machine differences](https://www.chezmoi.io/user-guide/manage-machine-to-machine-differences/) for details.
+To opt in on a machine, add to `chezmoi.toml`:
+
+```toml
+[data]
+    personal = true
+```
+
+See [chezmoi template data](https://www.chezmoi.io/user-guide/templating/#template-data) for details.
 
 ## What's Configured
 

@@ -2,12 +2,12 @@
 **/AGENTS.md
 
 # Include global AGENTS.md (personal only)
-{{ if contains "alec" .chezmoi.hostname }}
+{{ if .personal }}
 !.config/opencode/AGENTS.md
 {{ end }}
 
-# Personal configs — only deployed on machines with "alec" in hostname
-{{ if not (contains "alec" .chezmoi.hostname) }}
+# Personal configs — only deployed when chezmoi data.personal is true
+{{ if not .personal }}
 .ssh/config
 .config/tieba-sign/encrypted_config.toml.asc
 {{ end }}
