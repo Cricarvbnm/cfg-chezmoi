@@ -87,7 +87,7 @@
         "mcps": []
       },
       "designer": {
-        "model": "deepseek/deepseek-v4-flash",
+        "model": "opencode-go/kimi-k2.6",
         "variant": "medium",
         "skills": [
           "agent-browser"
