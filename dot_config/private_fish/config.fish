@@ -1,3 +1,15 @@
+function unproxy
+    set -gx no_proxy
+    set -gx all_proxy
+    set -gx http_proxy
+    set -gx https_proxy
+
+    set -gx NO_PROXY
+    set -gx ALL_PROXY
+    set -gx HTTP_PROXY
+    set -gx HTTPS_PROXY
+end
+
 if status is-login
     bass source ~/.profile
 end
