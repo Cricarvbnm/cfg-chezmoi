@@ -55,7 +55,7 @@
     },
     "deepseek": {
       "orchestrator": {
-        "model": "deepseek/deepseek-v4-pro",
+        "model": "opencode-go/deepseek-v4-pro",
         "skills": [
           "*"
         ],
@@ -65,7 +65,7 @@
         ]
       },
       "oracle": {
-        "model": "deepseek/deepseek-v4-pro",
+        "model": "opencode-go/deepseek-v4-pro",
         "variant": "max",
         "skills": [
           "simplify"
@@ -73,7 +73,7 @@
         "mcps": []
       },
       "librarian": {
-        "model": "deepseek/deepseek-v4-flash",
+        "model": "opencode/deepseek-v4-flash-free",
         "skills": [],
         "mcps": [
           "websearch",
@@ -82,7 +82,7 @@
         ]
       },
       "explorer": {
-        "model": "deepseek/deepseek-v4-flash",
+        "model": "opencode/deepseek-v4-flash-free",
         "skills": [],
         "mcps": []
       },
@@ -95,7 +95,7 @@
         "mcps": []
       },
       "fixer": {
-        "model": "deepseek/deepseek-v4-flash",
+        "model": "opencode/deepseek-v4-flash-free",
         "variant": "high",
         "skills": [],
         "mcps": []
