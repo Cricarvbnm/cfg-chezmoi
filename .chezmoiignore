@@ -18,12 +18,14 @@
 
 # Custom DE (niri + Wayland companions)
 {{ if not .custom_de }}
+.config/uwsm
+
 .config/niri/config.kdl
-.config/waybar/config.jsonc
-.config/waybar/style.css
-.config/fuzzel/fuzzel.ini
-.config/swaylock/config
-.config/swaync/config.json
-.config/swaync/style.css
-.config/uwsm/default-id
+.config/waybar
+.config/waybar
+.config/fuzzel
+.config/swaylock
+.config/swaync
+
+.config/hypr
 {{ end }}

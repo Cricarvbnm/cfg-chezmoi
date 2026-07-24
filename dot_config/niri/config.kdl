@@ -75,7 +75,7 @@ spawn-sh-at-startup "wl-paste --watch cliphist store"
 spawn-at-startup "/usr/libexec/polkit-gnome-authentication-agent-1"
 spawn-sh-at-startup "fcitx5 -r"
 
-spawn-at-startup "waybar"
+spawn-at-startup "waybar -c ~/.config/waybar/config.niri.jsonc"
 spawn-at-startup "blueman-applet"
 spawn-at-startup "nm-applet"
 
@@ -112,7 +112,8 @@ binds {
   // Launch
   Mod+E { spawn "nemo"; }
   Mod+T { spawn "kitty"; }
-  Mod+D { spawn "fuzzel"; }
+  Mod+B { spawn "firefox"; }
+  Alt+Space { spawn "fuzzel"; }
   Super+Escape { spawn "lock-and-dim"; }
   Mod+V { spawn-sh "cliphist list | fuzzel --dmenu --prompt='  ' | cliphist decode | wl-copy"; }
 
@@ -258,9 +259,9 @@ binds {
   Mod+S { toggle-column-tabbed-display; }
 
   // Screenshot
-  Print { screenshot; }
-  Ctrl+Print { screenshot-screen; }
-  Alt+Print { screenshot-window; }
+  Print { screenshot-screen; }
+  Ctrl+Print { screenshot; }
+  Shift+Print { screenshot-window; }
 
   // Session
   Mod+Escape allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }

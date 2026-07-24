@@ -8,7 +8,7 @@
   "margin-left": 8,
   "margin-right": 8,
   "modules-left": [
-    "niri/workspaces"
+    "hyprland/workspaces"
   ],
   "modules-center": [
     "clock"
@@ -27,8 +27,8 @@
     "upower",
     "battery"
   ],
-  // ── niri workspace switcher ──
-  "niri/workspaces": {
+  // ── Hyprland workspace switcher ──
+  "hyprland/workspaces": {
     "disable-scroll": true,
     "all-outputs": false,
     "format": "{icon}",
