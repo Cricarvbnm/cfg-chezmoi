@@ -13,10 +13,12 @@ hl.monitor({
 	scale = 1.33,
 })
 
--- DPMS wake on input
+-- Xwayland scaling
 hl.config({
-	misc = {
-		key_press_enables_dpms = true,
-		mouse_move_enables_dpms = true,
+	xwayland = {
+		force_zero_scaling = true,
 	},
 })
+
+-- X toolkit-specific scale
+hl.env("GDK_SCALE", "2")

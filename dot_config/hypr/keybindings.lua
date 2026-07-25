@@ -23,7 +23,7 @@ hl.bind(mainMod .. " + B", hl.dsp.exec_cmd("firefox"))
 hl.bind("ALT + space", hl.dsp.exec_cmd("fuzzel"))
 
 -- ── Lock screen ──
-hl.bind(mainMod .. " + Escape", hl.dsp.exec_cmd("lock-and-dim"))
+hl.bind(mainMod .. " + Escape", hl.dsp.exec_cmd("loginctl lock-session && swaylock && loginctl unlock-session"))
 
 -- ── Clipboard manager ──
 hl.bind(mainMod .. " + V", hl.dsp.exec_cmd('cliphist list | fuzzel --dmenu --prompt="  " | cliphist decode | wl-copy'))
@@ -80,6 +80,8 @@ hl.bind(mainMod .. " + J", hl.dsp.focus({ direction = "down" }))
 hl.bind(mainMod .. " + K", hl.dsp.focus({ direction = "up" }))
 hl.bind(mainMod .. " + L", hl.dsp.focus({ direction = "right" }))
 
+hl.bind(mainMod .. " + Tab", hl.dsp.window.cycle_next())
+
 -- ── Move windows (arrows + HJKL) ──
 hl.bind(mainMod .. " + SHIFT + left", hl.dsp.window.move({ direction = "l" }))
 hl.bind(mainMod .. " + SHIFT + right", hl.dsp.window.move({ direction = "r" }))
@@ -120,7 +122,7 @@ hl.bind("SHIFT + Print", hl.dsp.exec_cmd("hyprshot --mode window --mode active")
 -- ── Session ──
 hl.bind(mainMod .. " + SHIFT + E", hl.dsp.exit())
 hl.bind("CTRL + ALT + Delete", hl.dsp.exit())
-hl.bind(mainMod .. " + SHIFT + P", hl.dsp.exec_cmd([[sleep 0.5 && hyprctl dispatch 'hl.dsp.dpms("off")']]))
+hl.bind(mainMod .. " + SHIFT + P", hl.dsp.dpms())
 
 -- ── Shutdown menu ──
 -- Requires hyprshutdown — install before uncommenting

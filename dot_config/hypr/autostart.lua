@@ -6,7 +6,7 @@ hl.on("hyprland.start", function()
 	-- Notification daemon
 	hl.exec_cmd("swaync")
 	-- Idle management
-	hl.exec_cmd("swayidle -w timeout 300 \"lock-and-dim\" timeout 600 'hyprctl dispatch dpms off'")
+	hl.exec_cmd("swayidle")
 	-- Clipboard history
 	hl.exec_cmd("wl-paste --watch cliphist store")
 	-- Wallpaper

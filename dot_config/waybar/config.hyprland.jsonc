@@ -24,8 +24,8 @@
     "cpu",
     "memory",
     "power-profiles-daemon",
-    "upower",
-    "battery"
+    "upower"
+    // "battery"
   ],
   // ── Hyprland workspace switcher ──
   "hyprland/workspaces": {
@@ -131,26 +131,26 @@
     "format": "󰁹  {percentage}",
     "hide-if-empty": true
   },
-  // ── Battery (internal laptop battery) ──
-  "battery": {
-    "interval": 60,
-    "states": {
-      "warning": 20,
-      "critical": 10
-    },
-    "format": "{icon}  {capacity}%",
-    "format-icons": [
-      "󰁺",
-      "󰁻",
-      "󰁼",
-      "󰁽",
-      "󰁾",
-      "󰁿",
-      "󰂀",
-      "󰂁",
-      "󰂂"
-    ],
-    "format-charging": "{capacity}%  󰂄",
-    "tooltip-format": "{timeTo}  {power} W"
-  }
+  // // ── Battery (internal laptop battery) ──
+  // "battery": {
+  //   "interval": 60,
+  //   "states": {
+  //     "warning": 20,
+  //     "critical": 10
+  //   },
+  //   "format": "{icon}  {capacity}%",
+  //   "format-icons": [
+  //     "󰁺",
+  //     "󰁻",
+  //     "󰁼",
+  //     "󰁽",
+  //     "󰁾",
+  //     "󰁿",
+  //     "󰂀",
+  //     "󰂁",
+  //     "󰂂"
+  //   ],
+  //   "format-charging": "{capacity}%  󰂄",
+  //   "tooltip-format": "{timeTo}  {power} W"
+  // }
 }

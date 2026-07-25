@@ -1,0 +1,3 @@
+timeout 600 "! pgrep swaylock && loginctl lock-session && swaylock; loginctl unlock-session"
+lock "IDLE_DPMS_MANAGER= swayidle timeout 5 \"hyprctl dispatch 'hl.dsp.dpms(\"off\")'\" resume \"hyprctl dispatch 'hl.dsp.dpms(\"on\")'\""
+unlock "hyprctl dispatch 'hl.dsp.dpms(\"on\")' ; pkill --env IDLE_DPMS_MANAGER"

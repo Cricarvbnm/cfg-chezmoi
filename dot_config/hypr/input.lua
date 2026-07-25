@@ -5,6 +5,7 @@ hl.config({
 		kb_layout = "us",
 		kb_options = "numlock:1",
 		follow_mouse = 2,
+		float_switch_override_focus = 0,
 		sensitivity = 0,
 		touchpad = {
 			natural_scroll = true,
