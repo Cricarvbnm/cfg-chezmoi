@@ -7,7 +7,6 @@ Wayland app launcher with Catppuccin Macchiato theme.
 **File**: `fuzzel.ini`
 
 - Catppuccin Macchiato color scheme
-- Launches via `Mod+D` (bound in niri)
 - Terminal mode: `kitty {cmd}`
 
 ## References

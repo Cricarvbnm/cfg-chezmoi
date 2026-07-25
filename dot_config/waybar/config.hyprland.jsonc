@@ -86,8 +86,8 @@
   // ── Network (wired + wireless via NM) ──
   "network": {
     "interval": 5,
-    "format-wifi": "󰖩  {signalStrength}%  {essid}",
-    "format-ethernet": "󰈀",
+    "format-wifi": "󰖩  {ipaddr}",
+    "format-ethernet": "󰈀  {ipaddr}",
     "format-disconnected": "󰖪",
     "tooltip-format-wifi": "{essid}  {ipaddr}  {frequency} MHz",
     "tooltip-format-ethernet": "{ifname}  {ipaddr}",

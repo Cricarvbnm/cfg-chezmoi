@@ -11,7 +11,7 @@ Application configuration files mapped to `~/.config/` by chezmoi. Each subdirec
 | `fuzzel/` | `~/.config/fuzzel/` | Wayland app launcher: Catppuccin Macchiato theme |
 | `git/` | `~/.config/git/` | Git client config: user info, aliases, Delta diff pager |
 | `kitty/` | `~/.config/kitty/` | Kitty terminal: Catppuccin Macchiato theme |
-| `niri/` | `~/.config/niri/` | niri scrollable-tiling Wayland compositor |
+| `hypr/` | `~/.config/hypr/` | Hyprland dynamic tiling Wayland compositor |
 | `opencode/` | `~/.config/opencode/` | OpenCode AI agent config: agents, skills, plugins |
 | `private_fcitx5/` | `~/.config/fcitx5/` | Fcitx5 input method config (restrictive perms) |
 | `private_fish/` | `~/.config/fish/` | Fish shell config (restrictive perms) |

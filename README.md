@@ -1,6 +1,6 @@
 # Dotfiles
 
-Personal configuration managed by [chezmoi](https://www.chezmoi.io/). Designed for Gentoo / Arch Linux — terminal, editor, Wayland compositor (niri), keyboard, fonts, Git, SSH, AI agent tooling, TeX, and input method.
+Personal configuration managed by [chezmoi](https://www.chezmoi.io/). Designed for Gentoo / Arch Linux — terminal, editor, Wayland compositor (hyprland), keyboard, fonts, Git, SSH, AI agent tooling, TeX, and input method.
 
 ## Table of Contents
 
@@ -21,7 +21,7 @@ Personal configuration managed by [chezmoi](https://www.chezmoi.io/). Designed f
 
 | Application | Purpose | Config Location |
 |---|---|---|
-| [niri](https://github.com/YaLTeR/niri) | Scrollable-tiling Wayland compositor | `~/.config/niri/` |
+| [Hyprland](https://hyprland.org/) | Dynamic tiling Wayland compositor | `~/.config/hypr/` |
 | [waybar](https://github.com/Alexays/Waybar) | Status bar with system modules | `~/.config/waybar/` |
 | [fuzzel](https://codeberg.org/dnkl/fuzzel) | Wayland app launcher | `~/.config/fuzzel/` |
 | [swaylock](https://github.com/swaywm/swaylock) | Screen locker | `~/.config/swaylock/` |
@@ -43,7 +43,7 @@ Personal configuration managed by [chezmoi](https://www.chezmoi.io/). Designed f
 ## Tech Stack
 
 - **Manager**: [chezmoi](https://www.chezmoi.io/) — dotfile manager
-- **Compositor**: [niri](https://github.com/YaLTeR/niri) — scrollable-tiling Wayland compositor
+- **Compositor**: [Hyprland](https://hyprland.org/) — dynamic tiling Wayland compositor
 - **Theme**: [Catppuccin Macchiato](https://catppuccin.com/) (kitty, fuzzel, swaylock, swaync, waybar, btop)
 - **Editor**: [LazyVim](https://www.lazyvim.org/) (personal fork on Codeberg)
 - **Shell**: [Fish](https://fishshell.com/)
@@ -60,7 +60,7 @@ A Linux system with a Wayland session. The following packages should be availabl
 - SSH key with access to [Codeberg](https://codeberg.org) (for external git repos)
 
 **Desktop (Wayland):**
-- `niri` — compositor
+- `hyprland` — compositor
 - `waybar` — status bar
 - `fuzzel` — app launcher
 - `swaylock` — screen locker
@@ -173,8 +173,8 @@ Files prefixed with `private_` get restrictive permissions: 600 for files, 700 f
 │   │   └── delta.conf                   # Delta diff pager config
 │   ├── kitty/
 │   │   └── kitty.conf                   # Terminal + Catppuccin theme
-│   ├── niri/
-│   │   └── config.kdl                   # Wayland compositor keybindings + layout
+│   ├── hypr/
+│   │   └── hyprland.lua                 # Wayland compositor (Hyprland)
 │   ├── opencode/                        # OpenCode AI agent config
 │   ├── private_fcitx5/
 │   │   ├── private_config               # Fcitx5 config (restrictive perms)
@@ -245,7 +245,7 @@ Feature flags in `~/.config/chezmoi/chezmoi.toml` control selective deployment v
 | `personal` | Personal identity + knowledge | git `[user]`, knowledge vault, opencode/AGENTS.md |
 | `desktop` | Daily desktop machine | tieba-sign (requires `personal && desktop`) |
 | `proxy` | Network proxy available | SSH proxy config |
-| `custom_de` | Custom desktop environment | niri, waybar, fuzzel, swaylock, swaync, uwsm |
+| `custom_de` | Custom desktop environment | hyprland, waybar, fuzzel, swaylock, swaync, uwsm |
 
 To opt in on a machine:
 
@@ -258,7 +258,7 @@ To opt in on a machine:
     custom_de = true
 ```
 
-**`.chezmoiignore` template** — ignores entire files when their flag is false (`.custom_de` controls 8 niri companion files).
+**`.chezmoiignore` template** — ignores entire files when their flag is false (`.custom_de` controls hyprland and its companion files).
 
 **`.tmpl` conditional** — wraps granular sections (git `[user]`).
 
@@ -274,7 +274,7 @@ Detailed documentation lives in each config directory. Click through for specifi
 
 | App | Config | Docs |
 |-----|--------|------|
-| niri | `~/.config/niri/config.kdl` | [README](dot_config/niri/README.md) |
+| Hyprland | `~/.config/hypr/` | [README](dot_config/hypr/README.md) |
 | waybar | `~/.config/waybar/` | [README](dot_config/waybar/README.md) |
 | fuzzel | `~/.config/fuzzel/fuzzel.ini` | [README](dot_config/fuzzel/README.md) |
 | swaylock | `~/.config/swaylock/config` | [README](dot_config/swaylock/README.md) |

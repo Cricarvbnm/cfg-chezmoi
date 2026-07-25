@@ -16,11 +16,10 @@
 .config/tieba-sign/encrypted_config.toml.asc
 {{ end }}
 
-# Custom DE (niri + Wayland companions)
+# Custom DE (hyprland + Wayland companions)
 {{ if not .custom_de }}
 .config/uwsm
 
-.config/niri/config.kdl
 .config/waybar
 .config/waybar
 .config/fuzzel

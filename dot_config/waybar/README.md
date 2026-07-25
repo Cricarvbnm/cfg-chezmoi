@@ -1,6 +1,6 @@
 # waybar — ~/.config/waybar/
 
-Top bar for niri with Catppuccin Macchiato theme.
+Top bar for hyprland with Catppuccin Macchiato theme.
 
 ## Configuration
 
@@ -8,7 +8,7 @@ Top bar for niri with Catppuccin Macchiato theme.
 
 ### Modules
 
-- niri workspace switcher (kanji icons: 一二三…)
+- hyprland workspace switcher (kanji icons: 一二三…)
 - Clock with calendar tooltip
 - System tray, privacy indicator, idle inhibitor
 - Network (Wi-Fi/Ethernet via NM)
