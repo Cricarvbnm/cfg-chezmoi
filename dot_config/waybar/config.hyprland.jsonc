@@ -8,6 +8,10 @@
   "margin-left": 8,
   "margin-right": 8,
   "modules-left": [
+    "cpu",
+    "temperature",
+    "memory",
+    "network",
     "hyprland/workspaces"
   ],
   "modules-center": [
@@ -17,12 +21,8 @@
     "tray",
     "privacy",
     "idle_inhibitor",
-    "network",
     "pulseaudio",
     "backlight",
-    "temperature",
-    "cpu",
-    "memory",
     "power-profiles-daemon",
     "upower"
     // "battery"
