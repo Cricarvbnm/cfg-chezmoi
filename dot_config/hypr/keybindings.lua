@@ -23,7 +23,7 @@ hl.bind(mainMod .. " + B", hl.dsp.exec_cmd("firefox"))
 hl.bind("ALT + space", hl.dsp.exec_cmd("fuzzel"))
 
 -- ── Lock screen ──
-hl.bind(mainMod .. " + Escape", hl.dsp.exec_cmd("loginctl lock-session && swaylock && loginctl unlock-session"))
+hl.bind(mainMod .. " + Escape", hl.dsp.exec_cmd("loginctl lock-session && swaylock; loginctl unlock-session"))
 
 -- ── Clipboard manager ──
 hl.bind(mainMod .. " + V", hl.dsp.exec_cmd('cliphist list | fuzzel --dmenu --prompt="  " | cliphist decode | wl-copy'))
@@ -66,7 +66,7 @@ hl.bind(mainMod .. " + N", hl.dsp.exec_cmd("swaync-client -t"))
 hl.bind(mainMod .. " + SHIFT + N", hl.dsp.exec_cmd("swaync-client -d"))
 
 -- ── Window management ──
-hl.bind(mainMod .. " + Q", hl.dsp.window.close())
+hl.bind(mainMod .. " + C", hl.dsp.window.close())
 hl.bind(mainMod .. " + F11", hl.dsp.window.fullscreen())
 hl.bind(mainMod .. " + F", hl.dsp.window.float({ action = "toggle" }))
 
@@ -76,13 +76,28 @@ hl.bind(mainMod .. " + BracketLeft", hl.dsp.group.prev())
 hl.bind(mainMod .. " + BracketRight", hl.dsp.group.next())
 
 -- ── Focus (arrows + HJKL) ──
+local function focus_up()
+	if "monocle" == hl.get_active_workspace().tiled_layout then
+		hl.dispatch(hl.dsp.layout("cyclenext"))
+	else
+		hl.dispatch(hl.dsp.focus({ direction = "down" }))
+	end
+end
+local function focus_down()
+	if "monocle" == hl.get_active_workspace().tiled_layout then
+		hl.dispatch(hl.dsp.layout("cycleprev"))
+	else
+		hl.dispatch(hl.dsp.focus({ direction = "up" }))
+	end
+end
+
 hl.bind(mainMod .. " + left", hl.dsp.focus({ direction = "left" }))
 hl.bind(mainMod .. " + right", hl.dsp.focus({ direction = "right" }))
-hl.bind(mainMod .. " + up", hl.dsp.focus({ direction = "up" }))
-hl.bind(mainMod .. " + down", hl.dsp.focus({ direction = "down" }))
+hl.bind(mainMod .. " + up", focus_up)
+hl.bind(mainMod .. " + down", focus_down)
 hl.bind(mainMod .. " + H", hl.dsp.focus({ direction = "left" }))
-hl.bind(mainMod .. " + J", hl.dsp.focus({ direction = "down" }))
-hl.bind(mainMod .. " + K", hl.dsp.focus({ direction = "up" }))
+hl.bind(mainMod .. " + J", focus_up)
+hl.bind(mainMod .. " + K", focus_down)
 hl.bind(mainMod .. " + L", hl.dsp.focus({ direction = "right" }))
 
 hl.bind(mainMod .. " + Tab", hl.dsp.window.cycle_next())
@@ -144,6 +159,43 @@ hl.bind(
 	"CTRL + ALT + Escape",
 	hl.dsp.exec_cmd("command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch exit")
 )
+
+-- ── Cycle Layout ──
+hl.bind("SUPER + Backslash", function()
+	local layouts = {
+		"dwindle",
+		"monocle",
+		-- "scrolling",
+		-- "master",
+	}
+	local workspace = hl.get_active_workspace()
+	if hl.get_active_special_workspace() then
+		workspace = hl.get_active_special_workspace()
+	end
+
+	local next_layout = "dwindle"
+
+	if not workspace then
+		return
+	end
+
+	for i = 1, #layouts do
+		if layouts[i] == workspace.tiled_layout then
+			local next_layout_idx = (i % #layouts) + 1
+			next_layout = layouts[next_layout_idx]
+			break
+		end
+	end
+
+	if workspace.special then
+		hl.workspace_rule({ workspace = tostring(workspace.name), layout = next_layout })
+	else
+		hl.workspace_rule({ workspace = tostring(workspace.id), layout = next_layout })
+	end
+	hl.dispatch(
+		hl.dsp.exec_cmd([[notify-send --expire-time 2000 'Hyprland Layout' 'Switch to "]] .. next_layout .. [["']])
+	)
+end)
 
 -- ── Dwindle: toggle split direction ──
 hl.bind(mainMod .. " + O", hl.dsp.layout("togglesplit"))
