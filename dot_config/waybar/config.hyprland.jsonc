@@ -8,6 +8,7 @@
   "margin-left": 8,
   "margin-right": 8,
   "modules-left": [
+    "clock",
     "cpu",
     "temperature",
     "memory",
@@ -15,7 +16,7 @@
     "hyprland/workspaces"
   ],
   "modules-center": [
-    "clock"
+    "hyprland/window"
   ],
   "modules-right": [
     "tray",
@@ -46,6 +47,11 @@
       "focused": "",
       "default": ""
     }
+  },
+  // ── Hyprland window title ──
+  "hyprland/window": {
+    "format": "{class}: {title}",
+    "separate-outputs": true
   },
   // ── Clock ──
   // hover to see the calendar tooltip
