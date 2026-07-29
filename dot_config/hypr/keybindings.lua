@@ -70,6 +70,11 @@ hl.bind(mainMod .. " + Q", hl.dsp.window.close())
 hl.bind(mainMod .. " + F11", hl.dsp.window.fullscreen())
 hl.bind(mainMod .. " + F", hl.dsp.window.float({ action = "toggle" }))
 
+-- Group (tab-like window groups)
+hl.bind(mainMod .. " + S", hl.dsp.group.toggle())
+hl.bind(mainMod .. " + BracketLeft", hl.dsp.group.prev())
+hl.bind(mainMod .. " + BracketRight", hl.dsp.group.next())
+
 -- ── Focus (arrows + HJKL) ──
 hl.bind(mainMod .. " + left", hl.dsp.focus({ direction = "left" }))
 hl.bind(mainMod .. " + right", hl.dsp.focus({ direction = "right" }))
@@ -92,23 +97,32 @@ hl.bind(mainMod .. " + SHIFT + J", hl.dsp.window.move({ direction = "d" }))
 hl.bind(mainMod .. " + SHIFT + K", hl.dsp.window.move({ direction = "u" }))
 hl.bind(mainMod .. " + SHIFT + L", hl.dsp.window.move({ direction = "r" }))
 
+-- Overview (needs hyprexpo plugin)
+hl.bind(mainMod .. " + W", function()
+	hl.plugin.hyprexpo.expo("toggle")
+end)
+
 -- ── Workspaces 1-9 ──
 for i = 1, 9 do
 	hl.bind(mainMod .. " + " .. i, hl.dsp.focus({ workspace = i }))
 	hl.bind(mainMod .. " + SHIFT + " .. i, hl.dsp.window.move({ workspace = i }))
 end
 
+-- ── Workspaces Empty ──
+hl.bind(mainMod .. " + 0", hl.dsp.focus({ workspace = "emptym" }))
+hl.bind(mainMod .. " + SHIFT + 0", hl.dsp.window.move({ workspace = "emptym" }))
+
 -- ── Workspace scroll ──
-hl.bind(mainMod .. " + mouse_down", hl.dsp.focus({ workspace = "r+1" }))
-hl.bind(mainMod .. " + mouse_up", hl.dsp.focus({ workspace = "r-1" }))
-hl.bind(mainMod .. " + SHIFT + mouse_down", hl.dsp.window.move({ workspace = "r+1" }))
-hl.bind(mainMod .. " + SHIFT + mouse_up", hl.dsp.window.move({ workspace = "r-1" }))
+hl.bind(mainMod .. " + mouse_down", hl.dsp.focus({ workspace = "m+1" }))
+hl.bind(mainMod .. " + mouse_up", hl.dsp.focus({ workspace = "m-1" }))
+hl.bind(mainMod .. " + SHIFT + mouse_down", hl.dsp.window.move({ workspace = "m+1" }))
+hl.bind(mainMod .. " + SHIFT + mouse_up", hl.dsp.window.move({ workspace = "m-1" }))
 
 -- ── Workspace navigation (keyboard) ──
-hl.bind(mainMod .. " + CTRL + H", hl.dsp.focus({ workspace = "r-1" }))
-hl.bind(mainMod .. " + CTRL + L", hl.dsp.focus({ workspace = "r+1" }))
-hl.bind(mainMod .. " + CTRL + SHIFT + H", hl.dsp.window.move({ workspace = "r-1" }))
-hl.bind(mainMod .. " + CTRL + SHIFT + L", hl.dsp.window.move({ workspace = "r+1" }))
+hl.bind(mainMod .. " + CTRL + H", hl.dsp.focus({ workspace = "m-1" }))
+hl.bind(mainMod .. " + CTRL + L", hl.dsp.focus({ workspace = "m+1" }))
+hl.bind(mainMod .. " + CTRL + SHIFT + H", hl.dsp.window.move({ workspace = "m-1" }))
+hl.bind(mainMod .. " + CTRL + SHIFT + L", hl.dsp.window.move({ workspace = "m+1" }))
 
 -- ── Mouse drag & resize ──
 hl.bind(mainMod .. " + mouse:272", hl.dsp.window.drag(), { mouse = true })
@@ -141,16 +155,6 @@ hl.bind(mainMod .. " + O", hl.dsp.layout("togglesplit"))
 -- Pseudo tile (dwindle)
 hl.bind(mainMod .. " + P", hl.dsp.window.pseudo())
 
--- Group (tab-like window groups)
-hl.bind(mainMod .. " + S", hl.dsp.group.toggle())
-hl.bind(mainMod .. " + BracketLeft", hl.dsp.group.prev())
-hl.bind(mainMod .. " + BracketRight", hl.dsp.group.next())
-
 -- Magic workspace (scratchpad)
 hl.bind(mainMod .. " + grave", hl.dsp.workspace.toggle_special("magic"))
 hl.bind(mainMod .. " + SHIFT + grave", hl.dsp.window.move({ workspace = "special:magic" }))
-
--- TODO: overview (needs hyprexpo plugin)
-hl.bind(mainMod .. " + W", function()
-	hl.plugin.hyprexpo.expo("toggle")
-end)
