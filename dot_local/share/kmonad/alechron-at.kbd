@@ -27,7 +27,7 @@ Layers:
 )
 
 (defalias
-  ctl (tap-hold-next-release 200 esc lctl) ;; Caps: esc when tapped, left ctrl when held/combined.
+  ctl (tap-hold-next 200 esc lctl) ;; Caps: esc when tapped, left ctrl when held/combined.
 
   ;; rctrl: 1=rctrl, 2=switch to base, 3=game, 4=normal.
   ;; Hold/combine still acts as rctrl modifier.
