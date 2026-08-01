@@ -14,7 +14,7 @@ local function zoom(offset)
 	hl.config({ cursor = { zoom_factor = current } })
 end
 
-hl.bind("SUPER + 0", zoom)
+hl.bind("SUPER + Backspace", zoom)
 hl.bind("SUPER + equal", function()
 	zoom(0.5)
 end)
