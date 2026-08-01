@@ -20,7 +20,7 @@ local mainMod = "SUPER"
 hl.bind(mainMod .. " + T", hl.dsp.exec_cmd("kitty"))
 hl.bind(mainMod .. " + E", hl.dsp.exec_cmd("nemo"))
 hl.bind(mainMod .. " + B", hl.dsp.exec_cmd("firefox"))
-hl.bind("ALT + space", hl.dsp.exec_cmd("fuzzel"))
+hl.bind(mainMod .. " + " .. mainMod .. "_L", hl.dsp.exec_cmd("fuzzel"), { release = true })
 
 -- ── Lock screen ──
 hl.bind(mainMod .. " + Escape", hl.dsp.exec_cmd("loginctl lock-session && swaylock; loginctl unlock-session"))
@@ -67,6 +67,11 @@ hl.bind(mainMod .. " + SHIFT + N", hl.dsp.exec_cmd("swaync-client -d"))
 
 -- ── Window management ──
 hl.bind(mainMod .. " + C", hl.dsp.window.close())
+hl.bind("mouse:276", function() -- mouse:276: Forward key
+	if hl.get_active_window().fullscreen_client ~= 2 then
+		hl.dispatch(hl.dsp.window.close())
+	end
+end)
 hl.bind(mainMod .. " + F11", hl.dsp.window.fullscreen())
 hl.bind(mainMod .. " + F", hl.dsp.window.float({ action = "toggle" }))
 
