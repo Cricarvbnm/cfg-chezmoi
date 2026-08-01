@@ -14,19 +14,19 @@
 --   Full list:  see docs/xkbcommon-keysyms.h
 --   Mouse:      mouse_up | mouse_down | mouse:272(LMB) | mouse:273(RMB) | mouse:274(MMB)
 
-local mainMod = "SUPER"
+MAIN_MOD = "SUPER"
 
 -- ── Launch ──
-hl.bind(mainMod .. " + T", hl.dsp.exec_cmd("kitty"))
-hl.bind(mainMod .. " + E", hl.dsp.exec_cmd("nemo"))
-hl.bind(mainMod .. " + B", hl.dsp.exec_cmd("firefox"))
-hl.bind(mainMod .. " + " .. mainMod .. "_L", hl.dsp.exec_cmd("fuzzel"), { release = true })
+hl.bind(MAIN_MOD .. " + T", hl.dsp.exec_cmd("kitty"))
+hl.bind(MAIN_MOD .. " + E", hl.dsp.exec_cmd("nemo"))
+hl.bind(MAIN_MOD .. " + B", hl.dsp.exec_cmd("firefox"))
+hl.bind(MAIN_MOD .. " + " .. MAIN_MOD .. "_L", hl.dsp.exec_cmd("fuzzel"), { release = true })
 
 -- ── Lock screen ──
-hl.bind(mainMod .. " + Escape", hl.dsp.exec_cmd("loginctl lock-session && swaylock; loginctl unlock-session"))
+hl.bind(MAIN_MOD .. " + Escape", hl.dsp.exec_cmd("loginctl lock-session && swaylock; loginctl unlock-session"))
 
 -- ── Clipboard manager ──
-hl.bind(mainMod .. " + V", hl.dsp.exec_cmd('cliphist list | fuzzel --dmenu --prompt="  " | cliphist decode | wl-copy'))
+hl.bind(MAIN_MOD .. " + V", hl.dsp.exec_cmd('cliphist list | fuzzel --dmenu --prompt="  " | cliphist decode | wl-copy'))
 
 -- ── Volume (PipeWire) ──
 hl.bind(
@@ -62,23 +62,23 @@ hl.bind("XF86MonBrightnessUp", hl.dsp.exec_cmd("brightnessctl -e4 -n2 set 5%+"),
 hl.bind("XF86MonBrightnessDown", hl.dsp.exec_cmd("brightnessctl -e4 -n2 set 5%-"), { locked = true, repeating = true })
 
 -- ── Notifications ──
-hl.bind(mainMod .. " + N", hl.dsp.exec_cmd("swaync-client -t"))
-hl.bind(mainMod .. " + SHIFT + N", hl.dsp.exec_cmd("swaync-client -d"))
+hl.bind(MAIN_MOD .. " + N", hl.dsp.exec_cmd("swaync-client -t"))
+hl.bind(MAIN_MOD .. " + SHIFT + N", hl.dsp.exec_cmd("swaync-client -d"))
 
 -- ── Window management ──
-hl.bind(mainMod .. " + C", hl.dsp.window.close())
+hl.bind(MAIN_MOD .. " + C", hl.dsp.window.close())
 hl.bind("mouse:276", function() -- mouse:276: Forward key
 	if hl.get_active_window().fullscreen_client ~= 2 then
 		hl.dispatch(hl.dsp.window.close())
 	end
 end)
-hl.bind(mainMod .. " + F11", hl.dsp.window.fullscreen())
-hl.bind(mainMod .. " + F", hl.dsp.window.float({ action = "toggle" }))
+hl.bind(MAIN_MOD .. " + F11", hl.dsp.window.fullscreen())
+hl.bind(MAIN_MOD .. " + F", hl.dsp.window.float({ action = "toggle" }))
 
 -- Group (tab-like window groups)
-hl.bind(mainMod .. " + S", hl.dsp.group.toggle())
-hl.bind(mainMod .. " + BracketLeft", hl.dsp.group.prev())
-hl.bind(mainMod .. " + BracketRight", hl.dsp.group.next())
+hl.bind(MAIN_MOD .. " + S", hl.dsp.group.toggle())
+hl.bind(MAIN_MOD .. " + BracketLeft", hl.dsp.group.prev())
+hl.bind(MAIN_MOD .. " + BracketRight", hl.dsp.group.next())
 
 -- ── Focus (arrows + HJKL) ──
 local function focus_up()
@@ -96,57 +96,57 @@ local function focus_down()
 	end
 end
 
-hl.bind(mainMod .. " + left", hl.dsp.focus({ direction = "left" }))
-hl.bind(mainMod .. " + right", hl.dsp.focus({ direction = "right" }))
-hl.bind(mainMod .. " + up", focus_up)
-hl.bind(mainMod .. " + down", focus_down)
-hl.bind(mainMod .. " + H", hl.dsp.focus({ direction = "left" }))
-hl.bind(mainMod .. " + J", focus_up)
-hl.bind(mainMod .. " + K", focus_down)
-hl.bind(mainMod .. " + L", hl.dsp.focus({ direction = "right" }))
+hl.bind(MAIN_MOD .. " + left", hl.dsp.focus({ direction = "left" }))
+hl.bind(MAIN_MOD .. " + right", hl.dsp.focus({ direction = "right" }))
+hl.bind(MAIN_MOD .. " + up", focus_up)
+hl.bind(MAIN_MOD .. " + down", focus_down)
+hl.bind(MAIN_MOD .. " + H", hl.dsp.focus({ direction = "left" }))
+hl.bind(MAIN_MOD .. " + J", focus_up)
+hl.bind(MAIN_MOD .. " + K", focus_down)
+hl.bind(MAIN_MOD .. " + L", hl.dsp.focus({ direction = "right" }))
 
-hl.bind(mainMod .. " + Tab", hl.dsp.window.cycle_next())
+hl.bind(MAIN_MOD .. " + Tab", hl.dsp.window.cycle_next())
 
 -- ── Move windows (arrows + HJKL) ──
-hl.bind(mainMod .. " + SHIFT + left", hl.dsp.window.move({ direction = "l" }))
-hl.bind(mainMod .. " + SHIFT + right", hl.dsp.window.move({ direction = "r" }))
-hl.bind(mainMod .. " + SHIFT + up", hl.dsp.window.move({ direction = "u" }))
-hl.bind(mainMod .. " + SHIFT + down", hl.dsp.window.move({ direction = "d" }))
-hl.bind(mainMod .. " + SHIFT + H", hl.dsp.window.move({ direction = "l" }))
-hl.bind(mainMod .. " + SHIFT + J", hl.dsp.window.move({ direction = "d" }))
-hl.bind(mainMod .. " + SHIFT + K", hl.dsp.window.move({ direction = "u" }))
-hl.bind(mainMod .. " + SHIFT + L", hl.dsp.window.move({ direction = "r" }))
+hl.bind(MAIN_MOD .. " + SHIFT + left", hl.dsp.window.move({ direction = "l" }))
+hl.bind(MAIN_MOD .. " + SHIFT + right", hl.dsp.window.move({ direction = "r" }))
+hl.bind(MAIN_MOD .. " + SHIFT + up", hl.dsp.window.move({ direction = "u" }))
+hl.bind(MAIN_MOD .. " + SHIFT + down", hl.dsp.window.move({ direction = "d" }))
+hl.bind(MAIN_MOD .. " + SHIFT + H", hl.dsp.window.move({ direction = "l" }))
+hl.bind(MAIN_MOD .. " + SHIFT + J", hl.dsp.window.move({ direction = "d" }))
+hl.bind(MAIN_MOD .. " + SHIFT + K", hl.dsp.window.move({ direction = "u" }))
+hl.bind(MAIN_MOD .. " + SHIFT + L", hl.dsp.window.move({ direction = "r" }))
 
 -- Overview (needs hyprexpo plugin)
-hl.bind(mainMod .. " + W", function()
+hl.bind(MAIN_MOD .. " + W", function()
 	hl.plugin.hyprexpo.expo("toggle")
 end)
 
 -- ── Workspaces 1-9 ──
 for i = 1, 9 do
-	hl.bind(mainMod .. " + " .. i, hl.dsp.focus({ workspace = i }))
-	hl.bind(mainMod .. " + SHIFT + " .. i, hl.dsp.window.move({ workspace = i }))
+	hl.bind(MAIN_MOD .. " + " .. i, hl.dsp.focus({ workspace = i }))
+	hl.bind(MAIN_MOD .. " + SHIFT + " .. i, hl.dsp.window.move({ workspace = i }))
 end
 
 -- ── Workspaces Empty ──
-hl.bind(mainMod .. " + 0", hl.dsp.focus({ workspace = "emptym" }))
-hl.bind(mainMod .. " + SHIFT + 0", hl.dsp.window.move({ workspace = "emptym" }))
+hl.bind(MAIN_MOD .. " + 0", hl.dsp.focus({ workspace = "emptym" }))
+hl.bind(MAIN_MOD .. " + SHIFT + 0", hl.dsp.window.move({ workspace = "emptym" }))
 
 -- ── Workspace scroll ──
-hl.bind(mainMod .. " + mouse_down", hl.dsp.focus({ workspace = "m+1" }))
-hl.bind(mainMod .. " + mouse_up", hl.dsp.focus({ workspace = "m-1" }))
-hl.bind(mainMod .. " + SHIFT + mouse_down", hl.dsp.window.move({ workspace = "m+1" }))
-hl.bind(mainMod .. " + SHIFT + mouse_up", hl.dsp.window.move({ workspace = "m-1" }))
+hl.bind(MAIN_MOD .. " + mouse_down", hl.dsp.focus({ workspace = "m+1" }))
+hl.bind(MAIN_MOD .. " + mouse_up", hl.dsp.focus({ workspace = "m-1" }))
+hl.bind(MAIN_MOD .. " + SHIFT + mouse_down", hl.dsp.window.move({ workspace = "m+1" }))
+hl.bind(MAIN_MOD .. " + SHIFT + mouse_up", hl.dsp.window.move({ workspace = "m-1" }))
 
 -- ── Workspace navigation (keyboard) ──
-hl.bind(mainMod .. " + CTRL + H", hl.dsp.focus({ workspace = "m-1" }))
-hl.bind(mainMod .. " + CTRL + L", hl.dsp.focus({ workspace = "m+1" }))
-hl.bind(mainMod .. " + CTRL + SHIFT + H", hl.dsp.window.move({ workspace = "m-1" }))
-hl.bind(mainMod .. " + CTRL + SHIFT + L", hl.dsp.window.move({ workspace = "m+1" }))
+hl.bind(MAIN_MOD .. " + CTRL + H", hl.dsp.focus({ workspace = "m-1" }))
+hl.bind(MAIN_MOD .. " + CTRL + L", hl.dsp.focus({ workspace = "m+1" }))
+hl.bind(MAIN_MOD .. " + CTRL + SHIFT + H", hl.dsp.window.move({ workspace = "m-1" }))
+hl.bind(MAIN_MOD .. " + CTRL + SHIFT + L", hl.dsp.window.move({ workspace = "m+1" }))
 
 -- ── Mouse drag & resize ──
-hl.bind(mainMod .. " + mouse:272", hl.dsp.window.drag(), { mouse = true })
-hl.bind(mainMod .. " + mouse:273", hl.dsp.window.resize(), { mouse = true })
+hl.bind(MAIN_MOD .. " + mouse:272", hl.dsp.window.drag(), { mouse = true })
+hl.bind(MAIN_MOD .. " + mouse:273", hl.dsp.window.resize(), { mouse = true })
 
 -- ── Screenshots (requires hyprshot + hyprpicker) ──
 hl.bind("Print", hl.dsp.exec_cmd("hyprshot --mode output --mode active"))
@@ -154,9 +154,9 @@ hl.bind("CTRL + Print", hl.dsp.exec_cmd("hyprshot --mode region --freeze"))
 hl.bind("SHIFT + Print", hl.dsp.exec_cmd("hyprshot --mode window --mode active"))
 
 -- ── Session ──
-hl.bind(mainMod .. " + SHIFT + E", hl.dsp.exit())
+hl.bind(MAIN_MOD .. " + SHIFT + E", hl.dsp.exit())
 hl.bind("CTRL + ALT + Delete", hl.dsp.exit())
-hl.bind(mainMod .. " + SHIFT + P", hl.dsp.dpms())
+hl.bind(MAIN_MOD .. " + SHIFT + P", hl.dsp.dpms())
 
 -- ── Shutdown menu ──
 -- Requires hyprshutdown — install before uncommenting
@@ -203,15 +203,15 @@ hl.bind("SUPER + Backslash", function()
 end)
 
 -- ── Dwindle: toggle split direction ──
-hl.bind(mainMod .. " + O", hl.dsp.layout("togglesplit"))
+hl.bind(MAIN_MOD .. " + O", hl.dsp.layout("togglesplit"))
 
 -- ═══════════════════════════════════════════════════════════
 -- Explore — features under evaluation
 -- ═══════════════════════════════════════════════════════════
 
 -- Pseudo tile (dwindle)
-hl.bind(mainMod .. " + P", hl.dsp.window.pseudo())
+hl.bind(MAIN_MOD .. " + P", hl.dsp.window.pseudo())
 
 -- Magic workspace (scratchpad)
-hl.bind(mainMod .. " + grave", hl.dsp.workspace.toggle_special("magic"))
-hl.bind(mainMod .. " + SHIFT + grave", hl.dsp.window.move({ workspace = "special:magic" }))
+hl.bind(MAIN_MOD .. " + grave", hl.dsp.workspace.toggle_special("magic"))
+hl.bind(MAIN_MOD .. " + SHIFT + grave", hl.dsp.window.move({ workspace = "special:magic" }))
