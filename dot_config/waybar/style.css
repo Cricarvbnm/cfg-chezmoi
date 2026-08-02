@@ -31,21 +31,13 @@
 @define-color rosewater #f4dbd6;
 
 /* ── Global bar ── */
-* {
-    border: none;
-    border-radius: 0;
-    font-family: "Noto Sans CJK SC", "Noto Sans", sans-serif;
-    font-size: 13px;
-    min-height: 0;
-}
-
 window#waybar {
     background: transparent;
     color: @text;
 }
 
 #waybar {
-    background: alpha(@base, 0.85);
+    background: @base;
 }
 
 /* ── Module groups ── */
@@ -53,29 +45,20 @@ window#waybar {
 .modules-center,
 .modules-right {
     background: alpha(@surface0, 0.7);
-    border-radius: 8px;
-    margin: 4px 0;
-    padding: 0 8px;
+    border-radius: 12px;
+    padding: 0 12px;
 }
 
 /* ── Workspaces ── */
-#workspaces {
-    padding: 0 4px;
-}
-
 #workspaces button {
-    padding: 0 6px;
-    margin: 0 2px;
     color: @overlay1;
     background: transparent;
-    border-radius: 6px;
     transition: all 0.2s ease;
 }
 
 #workspaces button:hover {
     background: alpha(@surface2, 0.5);
     color: @text;
-    box-shadow: none;
 }
 
 #workspaces button.active {
@@ -88,16 +71,9 @@ window#waybar {
     color: @red;
 }
 
-/* ── Labels ── */
-label {
-    padding: 0 4px;
-}
-
 /* ── Clock ── */
 #clock {
     color: @rosewater;
-    font-weight: 600;
-    padding: 0 12px;
 }
 
 /* ── Privacy ── */
@@ -160,7 +136,7 @@ label {
 
 /* ── Battery ── */
 #battery {
-    color: @yellow;
+    color: @sapphire;
 }
 
 #battery.warning {
@@ -175,24 +151,9 @@ label {
     color: @green;
 }
 
-/* ── Tray ── */
-#tray {
-    padding: 0 4px;
-}
-
-#tray > .passive {
-    -gtk-icon-effect: dim;
-}
-
-#tray > .needs-attention {
-    -gtk-icon-effect: highlight;
-}
-
 /* ── Tooltips ── */
 tooltip {
-    background: @surface0;
-    border: 1px solid @surface2;
-    border-radius: 8px;
+    background: @base;
 }
 
 tooltip label {

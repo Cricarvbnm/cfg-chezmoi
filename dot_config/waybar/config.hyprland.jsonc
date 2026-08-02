@@ -2,7 +2,7 @@
   "layer": "top",
   "position": "top",
   "height": 36,
-  "spacing": 4,
+  "spacing": 16,
   "margin-top": 0,
   "margin-bottom": 0,
   "margin-left": 8,
@@ -25,8 +25,8 @@
     "pulseaudio",
     "backlight",
     "power-profiles-daemon",
-    "upower"
-    // "battery"
+    // "upower"
+    "battery"
   ],
   // ── Hyprland workspace switcher ──
   "hyprland/workspaces": {
@@ -34,15 +34,15 @@
     "all-outputs": false,
     "format": "{icon}",
     "format-icons": {
-      "1": "一",
-      "2": "二",
-      "3": "三",
-      "4": "四",
-      "5": "五",
-      "6": "六",
-      "7": "七",
-      "8": "八",
-      "9": "九",
+      "1": "1",
+      "2": "2",
+      "3": "3",
+      "4": "4",
+      "5": "5",
+      "6": "6",
+      "7": "7",
+      "8": "8",
+      "9": "9",
       "urgent": "",
       "focused": "",
       "default": ""
@@ -132,31 +132,30 @@
     "format": "󰍛  {percentage}%",
     "on-click": "kitty -e btop"
   },
-  // ── UPower (external device batteries: bluetooth, etc.) ──
-  "upower": {
-    "format": "󰁹  {percentage}",
-    "hide-if-empty": true
-  },
-  // // ── Battery (internal laptop battery) ──
-  // "battery": {
-  //   "interval": 60,
-  //   "states": {
-  //     "warning": 20,
-  //     "critical": 10
-  //   },
-  //   "format": "{icon}  {capacity}%",
-  //   "format-icons": [
-  //     "󰁺",
-  //     "󰁻",
-  //     "󰁼",
-  //     "󰁽",
-  //     "󰁾",
-  //     "󰁿",
-  //     "󰂀",
-  //     "󰂁",
-  //     "󰂂"
-  //   ],
-  //   "format-charging": "{capacity}%  󰂄",
-  //   "tooltip-format": "{timeTo}  {power} W"
-  // }
+  // // ── UPower (external device batteries: bluetooth, etc.) ──
+  // "upower": {
+  //   "format": "󰁹  {percentage}",
+  // },
+  // ── Battery (internal laptop battery) ──
+  "battery": {
+    "interval": 60,
+    "states": {
+      "warning": 20,
+      "critical": 10
+    },
+    "format": "{icon}  {capacity}%",
+    "format-icons": [
+      "󰁺",
+      "󰁻",
+      "󰁼",
+      "󰁽",
+      "󰁾",
+      "󰁿",
+      "󰂀",
+      "󰂁",
+      "󰂂"
+    ],
+    "format-charging": "{capacity}%  󰂄",
+    "tooltip-format": "{timeTo}  {power} W"
+  }
 }
