@@ -6,11 +6,11 @@ hl.on("hyprland.start", function()
 	-- Notification daemon
 	hl.exec_cmd("swaync")
 	-- Idle management
-	hl.exec_cmd("swayidle")
+	hl.exec_cmd("hypridle")
 	-- Clipboard history
 	hl.exec_cmd("wl-paste --watch cliphist store")
 	-- Wallpaper
-	hl.exec_cmd("swaybg -i /storage/media/images/Wallpapers/116912166_p0.png -m fill")
+	hl.exec_cmd("swaybg -i /storage/media/images/Wallpapers/train-sideview.png -m fill")
 	-- Input method
 	hl.exec_cmd("fcitx5 -r")
 	-- Network
