@@ -1,17 +1,15 @@
 [".config/nvim"]
-
-
-{{ if .personal }}
 type = "git-repo"
 url = "ssh://git@codeberg.org/Alechron/cfg-lazyvim.git"
 refreshPeriod = "168h"
+
+{{ if .personal }}
 ["knowledge"]
-
-{{ end }}
-
 type = "git-repo"
 url = "ssh://git@codeberg.org/Alechron/knowledge-vault.git"
 refreshPeriod = "168h"
+{{ end }}
+
 [".local/share/fcitx5/rime"]
 type = "archive"
 url = "https://github.com/iDvel/rime-ice/archive/refs/heads/main.zip"
