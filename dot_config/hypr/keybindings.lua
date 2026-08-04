@@ -71,7 +71,7 @@ hl.bind("mouse:276", function() -- mouse:276: Forward key
 	if hl.get_active_window().fullscreen_client ~= 2 then
 		hl.dispatch(hl.dsp.window.close())
 	end
-end)
+end, { non_consuming = true })
 hl.bind(MAIN_MOD .. " + F11", hl.dsp.window.fullscreen())
 hl.bind(MAIN_MOD .. " + F", hl.dsp.window.float({ action = "toggle" }))
 
