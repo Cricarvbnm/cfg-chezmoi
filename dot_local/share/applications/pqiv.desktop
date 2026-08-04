@@ -1,0 +1,12 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Comment=Powerful quick image viewer
+Name=pqiv
+NoDisplay=true
+Icon=emblem-photos
+TryExec=pqiv-shim
+Exec=pqiv-shim %F
+MimeType=application/pdf;application/x-navi-animation;application/x-pdf;image/bmp;image/gif;image/jpeg;image/jpg;image/pdf;image/png;image/qtif;image/svg;image/svg+xml;image/svg+xml-compressed;image/svg-xml;image/tiff;image/vnd.adobe.svg+xml;image/webp;image/x-MS-bmp;image/x-bmp;image/x-icns;image/x-ico;image/x-icon;image/x-ms-bmp;image/x-png;image/x-portable-anymap;image/x-portable-bitmap;image/x-portable-graymap;image/x-portable-pixmap;image/x-quicktime;image/x-tga;image/x-win-bitmap;image/x-wmf;image/x-xbitmap;image/x-xpixmap;text/xml-svg;
+Categories=Graphics;
+Keywords=Viewer;

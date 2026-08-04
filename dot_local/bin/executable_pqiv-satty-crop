@@ -1,0 +1,2 @@
+#!/usr/bin/env sh
+exec satty -f "$1" --output-filename "$1" --initial-tool=crop
