@@ -41,12 +41,17 @@ hl.config({
 	},
 })
 
+hl.env("HYPRCURSOR_THEME", "Nordzy-hyprcursors-catppuccin-macchiato-sky")
+hl.env("HYPRCURSOR_SIZE", "28")
+hl.env("CURSOR_THEME", "Nordzy-catppuccin-macchiato-sky")
+hl.env("CURSOR_SIZE", "28")
+
 -- ── Animation Curves ──
 -- Material Design curves (from end-4/dots-hyprland, 15K stars)
 hl.curve("emphasizedDecel", { type = "bezier", points = { { 0.05, 0.7 }, { 0.1, 1.0 } } })
 hl.curve("emphasizedAccel", { type = "bezier", points = { { 0.3, 0.0 }, { 0.8, 0.15 } } })
-hl.curve("menuDecel",       { type = "bezier", points = { { 0.1, 1.0 }, { 0.0, 1.0 } } })
-hl.curve("standardDecel",   { type = "bezier", points = { { 0.0, 0.0 }, { 0.0, 1.0 } } })
+hl.curve("menuDecel", { type = "bezier", points = { { 0.1, 1.0 }, { 0.0, 1.0 } } })
+hl.curve("standardDecel", { type = "bezier", points = { { 0.0, 0.0 }, { 0.0, 1.0 } } })
 
 -- ── Animations ──
 hl.animation({ leaf = "global", enabled = true, speed = 5.0, bezier = "standardDecel" })
