@@ -41,9 +41,10 @@ hl.config({
 	},
 })
 
-hl.env("HYPRCURSOR_THEME", "Nordzy-hyprcursors-catppuccin-macchiato-sky")
+local plette_color = "catppuccin-latte-sky"
+hl.env("HYPRCURSOR_THEME", "Nordzy-hyprcursors-" .. plette_color)
 hl.env("HYPRCURSOR_SIZE", "28")
-hl.env("CURSOR_THEME", "Nordzy-catppuccin-macchiato-sky")
+hl.env("CURSOR_THEME", "Nordzy-" .. plette_color)
 hl.env("CURSOR_SIZE", "28")
 
 -- ── Animation Curves ──
