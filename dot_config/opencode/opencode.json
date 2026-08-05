@@ -12,5 +12,10 @@
       "disable": true
     }
   },
-  "lsp": true
+  "lsp": true,
+  "permission": {
+    "external_directory": {
+      "~/knowledge/**": "allow"
+    }
+  }
 }
