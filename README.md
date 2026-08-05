@@ -26,7 +26,6 @@ Personal configuration managed by [chezmoi](https://www.chezmoi.io/). Designed f
 | [fuzzel](https://codeberg.org/dnkl/fuzzel) | Wayland app launcher | `~/.config/fuzzel/` |
 | [swaylock](https://github.com/swaywm/swaylock) | Screen locker | `~/.config/swaylock/` |
 | [SwayNC](https://github.com/ErikReider/SwayNotificationCenter) | Notification daemon | `~/.config/swaync/` |
-| [uwsm](https://github.com/Vladimir-csp/uwsm) | Wayland session manager | `~/.config/uwsm/` |
 | [kitty](https://sw.kovidgoyal.net/kitty/) | Terminal emulator | `~/.config/kitty/` |
 | [Neovim](https://neovim.io/) | Text editor (LazyVim) | `~/.config/nvim/` |
 | [Git](https://git-scm.com/) | Version control | `~/.config/git/` |
@@ -194,7 +193,6 @@ Files prefixed with `private_` get restrictive permissions: 600 for files, 700 f
 │   │   └── style.css                    # Notification CSS + Catppuccin theme
 │   ├── tieba-sign/
 │   │   └── encrypted_config.toml.asc    # GPG-encrypted sign-in credentials
-│   ├── uwsm/                            # Session manager (config not in repo)
 │   ├── waybar/
 │   │   ├── config.hyprland.jsonc        # Status bar modules
 │   │   └── style.css                    # Catppuccin-themed bar
@@ -261,7 +259,7 @@ Feature flags in `~/.config/chezmoi/chezmoi.toml` control selective deployment v
 | `personal` | Personal identity + knowledge | git `[user]`, knowledge vault, opencode/AGENTS.md |
 | `desktop` | Daily desktop machine | tieba-sign (requires `personal && desktop`) |
 | `proxy` | Network proxy available | SSH proxy config |
-| `custom_de` | Custom desktop environment | hyprland, waybar, fuzzel, swaylock, swaync, uwsm |
+| `custom_de` | Custom desktop environment | hyprland, waybar, fuzzel, swaylock, swaync |
 
 To opt in on a machine:
 
@@ -284,59 +282,58 @@ See [chezmoi template data](https://www.chezmoi.io/user-guide/templating/#templa
 
 ## What's Configured
 
-Detailed documentation lives in each config directory. Click through for specifics.
+Most configurations are self-documenting (config files speak for themselves). Complex or non-obvious configurations are documented below.
 
 ### Desktop (Wayland)
 
-| App | Config | Docs |
-|-----|--------|------|
-| Hyprland | `~/.config/hypr/` | [README](dot_config/hypr/README.md) |
-| waybar | `~/.config/waybar/` | [README](dot_config/waybar/README.md) |
-| fuzzel | `~/.config/fuzzel/fuzzel.ini` | [README](dot_config/fuzzel/README.md) |
-| swaylock | `~/.config/swaylock/config` | [README](dot_config/swaylock/README.md) |
-| SwayNC | `~/.config/swaync/` | [README](dot_config/swaync/README.md) |
-| uwsm | `~/.config/uwsm/` | [README](dot_config/uwsm/README.md) |
+| App | Config |
+|-----|--------|
+| [Hyprland](https://hyprland.org/) | `~/.config/hypr/` — [README](dot_config/hypr/README.md) |
+| waybar | `~/.config/waybar/` |
+| fuzzel | `~/.config/fuzzel/` |
+| swaylock | `~/.config/swaylock/` |
+| SwayNC | `~/.config/swaync/` |
 
 ### Terminal & Shell
 
-| App | Config | Docs |
-|-----|--------|------|
-| kitty | `~/.config/kitty/kitty.conf` | [README](dot_config/kitty/README.md) |
-| fish | `~/.config/fish/config.fish` | [README](dot_config/private_fish/README.md) |
+| App | Config |
+|-----|--------|
+| kitty | `~/.config/kitty/` |
+| fish | `~/.config/fish/` |
 
 ### Editor & System
 
-| App | Config | Docs |
-|-----|--------|------|
-| Neovim | `~/.config/nvim/` (external) | [LazyVim](https://www.lazyvim.org/) |
-| Git | `~/.config/git/` | [README](dot_config/git/README.md) |
-| btop | `~/.config/btop/btop.conf` | [README](dot_config/btop/README.md) |
+| App | Config |
+|-----|--------|
+| Neovim | `~/.config/nvim/` (external: [LazyVim](https://www.lazyvim.org/)) |
+| Git | `~/.config/git/` |
+| btop | `~/.config/btop/` |
 
 ### Input
 
-| App | Config | Docs |
-|-----|--------|------|
-| Fcitx5 + Rime | `~/.config/fcitx5/` | [README](dot_config/private_fcitx5/README.md) |
-| kmonad | `~/.local/share/kmonad/` | [README](dot_local/share/kmonad/README.md) |
-| Fontconfig | `~/.config/fontconfig/` | [README](dot_config/fontconfig/README.md) |
+| App | Config |
+|-----|--------|
+| Fcitx5 + Rime | `~/.config/fcitx5/` |
+| kmonad | `~/.local/share/kmonad/` |
+| Fontconfig | `~/.config/fontconfig/` |
 
 ### AI & Automation
 
-| App | Config | Docs |
-|-----|--------|------|
-| OpenCode | `~/.config/opencode/` | [README](dot_config/opencode/README.md) |
-| Agent Skills | `~/.agents/` | [README](dot_agents/README.md) |
-| tieba-sign | `~/.config/tieba-sign/` | [README](dot_config/tieba-sign/README.md) |
+| App | Config |
+|-----|--------|
+| OpenCode | `~/.config/opencode/` |
+| Agent Skills | `~/.agents/` |
+| tieba-sign | `~/.config/tieba-sign/` |
 
 ### Documents
 
-| App | Config | Docs |
-|-----|--------|------|
-| TeX (texmf) | `~/texmf/` | [README](texmf/README.md) |
-| pandoc template | `~/Templates/pandoc/` (external) | [Eisvogel](https://github.com/Wandmalfarbe/pandoc-latex-template) |
-| ppt-master | `~/Projects/ppt-master/` (external) | [ppt-master](https://github.com/hugohe3/ppt-master) |
-| SSH | `~/.ssh/config` | [README](private_dot_ssh/README.md) |
-| knowledge vault | `~/knowledge/` (external) | Obsidian vault
+| App | Config |
+|-----|--------|
+| TeX (texmf) | `~/texmf/` |
+| pandoc template | `~/Templates/pandoc/` (external: [Eisvogel](https://github.com/Wandmalfarbe/pandoc-latex-template)) |
+| ppt-master | `~/Projects/ppt-master/` (external) |
+| SSH | `~/.ssh/` |
+| knowledge vault | `~/knowledge/` (external)
 
 ## License
 

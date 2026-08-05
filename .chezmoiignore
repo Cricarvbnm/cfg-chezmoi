@@ -18,8 +18,6 @@
 
 # Custom DE (hyprland + Wayland companions)
 {{ if not .custom_de }}
-.config/uwsm
-
 .config/waybar
 .config/fuzzel
 .config/swaylock
