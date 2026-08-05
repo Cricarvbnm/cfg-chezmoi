@@ -4,7 +4,7 @@ System font preferences for CJK compatibility.
 
 ## Configuration
 
-**File**: `conf.d/50-prefered-fonts.conf`
+**File**: `fonts.conf`
 
 | Category | Preferred Font |
 |---|---|

@@ -67,7 +67,6 @@ A Linux system with a Wayland session. The following packages should be availabl
 - `swaync` — notification daemon
 - `uwsm` — session manager
 - `swaybg` — wallpaper
-- `swayidle` — idle management
 
 **Terminal & Shell:**
 - `kitty` — terminal emulator
@@ -123,7 +122,7 @@ chezmoi apply
 
 ### 3. Refresh external repositories
 
-External components (Neovim config, AI skills, knowledge vault) are managed via `.chezmoiexternal.toml`:
+External components (Neovim config, AI skills, knowledge vault) are managed via `.chezmoiexternal.toml.tmpl`:
 
 ```bash
 # Force refresh all externals
@@ -164,8 +163,8 @@ Files prefixed with `private_` get restrictive permissions: 600 for files, 700 f
 │   ├── btop/
 │   │   ├── btop.conf                    # System monitor config
 │   │   └── themes/                      # Catppuccin theme
-│   ├── fontconfig/conf.d/
-│   │   └── 50-prefered-fonts.conf       # CJK font preferences
+│   ├── fontconfig/
+│   │   └── fonts.conf                   # CJK font preferences
 │   ├── fuzzel/
 │   │   └── fuzzel.ini                   # App launcher + Catppuccin theme
 │   ├── git/
@@ -174,7 +173,14 @@ Files prefixed with `private_` get restrictive permissions: 600 for files, 700 f
 │   ├── kitty/
 │   │   └── kitty.conf                   # Terminal + Catppuccin theme
 │   ├── hypr/
-│   │   └── hyprland.lua                 # Wayland compositor (Hyprland)
+│   │   ├── hyprland.lua                 # Main entry point
+│   │   ├── autostart.lua                # Startup applications
+│   │   ├── input.lua                    # Input device settings
+│   │   ├── keybindings.lua             # Key bindings
+│   │   ├── monitors.lua                # Monitor configuration
+│   │   ├── rules.lua                   # Window rules
+│   │   ├── style.lua                   # Visual styling
+│   │   └── zoom.lua                    # Zoom/scale support
 │   ├── opencode/                        # OpenCode AI agent config
 │   ├── private_fcitx5/
 │   │   ├── private_config               # Fcitx5 config (restrictive perms)
@@ -188,16 +194,25 @@ Files prefixed with `private_` get restrictive permissions: 600 for files, 700 f
 │   │   └── style.css                    # Notification CSS + Catppuccin theme
 │   ├── tieba-sign/
 │   │   └── encrypted_config.toml.asc    # GPG-encrypted sign-in credentials
-│   ├── uwsm/
-│   │   └── default-id                   # Session manager compositor ID
+│   ├── uwsm/                            # Session manager (config not in repo)
 │   ├── waybar/
-│   │   ├── config.jsonc                 # Status bar modules
+│   │   ├── config.hyprland.jsonc        # Status bar modules
 │   │   └── style.css                    # Catppuccin-themed bar
 │   └── nvim/                            # → External: LazyVim (git-repo)
-├── dot_local/share/kmonad/
-│   ├── alechron-at.kbd                  # AT keyboard mapping
-│   ├── alechron-usb.kbd                 # USB keyboard mapping
-│   └── README.md
+├── dot_local/
+│   ├── bin/                              # Utility scripts (pqiv image viewer wrappers)
+│   └── share/
+│       ├── applications/
+│       │   └── pqiv.desktop              # pqiv desktop entry
+│       ├── fcitx5/rime/                  # Rime IME custom configs
+│       │   ├── default.custom.yaml
+│       │   └── rime_ice.custom.yaml
+│       ├── gentoo/repos/local/           # Local Gentoo ebuilds
+│       ├── icons/
+│       │   └── symlink_default           # Default icon theme symlink
+│       └── kmonad/
+│           ├── alechron-at.kbd
+│           └── alechron-usb.kbd
 ├── dot_agents/
 │   ├── symlink_all-skills              # → antigravity-awesome-skills
 │   ├── exact_skills/                    # Exact symlinks to skill defs
@@ -207,14 +222,14 @@ Files prefixed with `private_` get restrictive permissions: 600 for files, 700 f
 ├── texmf/
 │   ├── run_once_texhash.sh              # TeX font cache refresh
 │   └── tex/latex/                       # Local TeX packages
-├── .chezmoiexternal.toml                # External dependency definitions
+├── .chezmoiexternal.toml.tmpl           # External dependency definitions
 ├── .chezmoiignore                       # Selective deployment rules (template)
 └── README.md
 ```
 
 ### External Repositories
 
-Defined in `.chezmoiexternal.toml`. These are downloaded separately and kept in sync via `chezmoi apply --refresh-externals`.
+Defined in `.chezmoiexternal.toml.tmpl`. These are downloaded separately and kept in sync via `chezmoi apply --refresh-externals`.
 
 | Target Path | Type | Source | Refresh |
 |---|---|---|---|
@@ -222,10 +237,11 @@ Defined in `.chezmoiexternal.toml`. These are downloaded separately and kept in 
 | `~/knowledge` | `git-repo` | `ssh://git@codeberg.org/Alechron/knowledge-vault.git` | 168h (personal only) |
 | `~/.local/share/fcitx5/rime` | `archive` | GitHub: iDvel/rime-ice | 168h |
 | `~/.local/share/fcitx5/rime/cn_dicts/moegirl.dict.yaml` | `file` | GitHub: outloudvi/mw2fcitx | 168h |
-| `~/.agents/Understand-Anything` | `archive` | GitHub: Lum1104/Understand-Anything | 168h |
+| `~/.agents/Understand-Anything` | `archive` | GitHub: Lum1104/Understand-Anything (plugin subdir only) | 168h |
 | `~/.agents/antigravity-awesome-skills` | `archive` | GitHub: sickn33/antigravity-awesome-skills | 168h |
 | `~/Templates/pandoc/pandoc-latex-template` | `archive` | GitHub: Wandmalfarbe/pandoc-latex-template | 168h |
 | `~/Projects/ppt-master` | `archive` | GitHub: hugohe3/ppt-master | 168h |
+| `~/.config/hypr/docs/xkbcommon-keysyms.h` | `file` | GitHub: xkbcommon/libxkbcommon | 168h |
 
 ### Run Scripts
 
@@ -262,7 +278,7 @@ To opt in on a machine:
 
 **`.tmpl` conditional** — wraps granular sections (git `[user]`).
 
-**`.chezmoiexternal.toml` template** — conditional external repositories (knowledge vault).
+**`.chezmoiexternal.toml.tmpl` template** — conditional external repositories (knowledge vault).
 
 See [chezmoi template data](https://www.chezmoi.io/user-guide/templating/#template-data) for details.
 
@@ -279,7 +295,7 @@ Detailed documentation lives in each config directory. Click through for specifi
 | fuzzel | `~/.config/fuzzel/fuzzel.ini` | [README](dot_config/fuzzel/README.md) |
 | swaylock | `~/.config/swaylock/config` | [README](dot_config/swaylock/README.md) |
 | SwayNC | `~/.config/swaync/` | [README](dot_config/swaync/README.md) |
-| uwsm | `~/.config/uwsm/default-id` | [README](dot_config/uwsm/README.md) |
+| uwsm | `~/.config/uwsm/` | [README](dot_config/uwsm/README.md) |
 
 ### Terminal & Shell
 

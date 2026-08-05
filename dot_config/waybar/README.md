@@ -4,7 +4,7 @@ Top bar for hyprland with Catppuccin Macchiato theme.
 
 ## Configuration
 
-**Files**: `config.jsonc` + `style.css`
+**Files**: `config.hyprland.jsonc` + `style.css`
 
 ### Modules
 

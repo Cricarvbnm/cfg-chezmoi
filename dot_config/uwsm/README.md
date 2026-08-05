@@ -4,7 +4,7 @@ Universal Wayland Session Manager.
 
 ## Configuration
 
-**File**: `default-id` — contains `hyprland.desktop`, instructing uwsm to launch hyprland as the compositor.
+No config currently tracked — neither in source tree nor deployed to target. Previously managed a `default-id` file; was removed as unnecessary.
 
 ## References
 

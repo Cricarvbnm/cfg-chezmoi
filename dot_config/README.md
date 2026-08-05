@@ -7,7 +7,7 @@ Application configuration files mapped to `~/.config/` by chezmoi. Each subdirec
 | Directory/File | Target | Description |
 |---|---|---|
 | `btop/` | `~/.config/btop/` | System resource monitor: Catppuccin theme |
-| `fontconfig/conf.d/` | `~/.config/fontconfig/conf.d/` | CJK font preferences (serif/sans/mono) |
+| `fontconfig/` | `~/.config/fontconfig/` | CJK font preferences (serif/sans/mono) |
 | `fuzzel/` | `~/.config/fuzzel/` | Wayland app launcher: Catppuccin Macchiato theme |
 | `git/` | `~/.config/git/` | Git client config: user info, aliases, Delta diff pager |
 | `kitty/` | `~/.config/kitty/` | Kitty terminal: Catppuccin Macchiato theme |
@@ -27,6 +27,6 @@ Application configuration files mapped to `~/.config/` by chezmoi. Each subdirec
 - Source files are plain config files — no chezmoi templates unless machine-specific values needed
 - `private_` prefix = restrictive permissions (600 for files, 700 for dirs)
 - `nvim/` is not tracked directly; it's an `external git-repo` in `.chezmoiexternal.toml`
-- External entries are defined in the repo root's `.chezmoiexternal.toml`
+- External entries are defined in the repo root's `.chezmoiexternal.toml.tmpl`
 
 > **关于 `opencode/AGENTS.md`**：它是被部署到 `~/.config/opencode/` 的 AI agent 行为守则（由 `.chezmoiignore` 显式 include），**不是**本仓库的目录说明文档。它的内容是指导 agent 在目标机器上的工作行为，修改它等于改 agent 行为，而非改仓库文档。

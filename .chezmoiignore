@@ -21,7 +21,6 @@
 .config/uwsm
 
 .config/waybar
-.config/waybar
 .config/fuzzel
 .config/swaylock
 .config/swaync
