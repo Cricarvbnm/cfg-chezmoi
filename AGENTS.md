@@ -10,9 +10,9 @@ This is a **chezmoi dotfile repository**, not a typical application. No build, t
 
 ## Path Mapping
 
-Source files in this repo map to target paths via chezmoi:
+**Source tree** (this repo) → **target tree** (your home directory):
 
-| Source | Target | Perms |
+| Source (editing here) | Target (deployed here) | Perms |
 |--------|--------|-------|
 | `dot_config/` | `~/.config/` | 755 |
 | `dot_local/` | `~/.local/` | 755 |
@@ -62,10 +62,10 @@ Common tasks have dedicated skills that enforce correct procedures:
 
 | Task | Skill |
 |------|-------|
-| Add or modify config files | `@chezmoi-add-config` |
-| Add external dependencies | `@chezmoi-add-external` |
-| Sync documentation with data | `@doc-sync` |
-| Understand chezmoi templates | `@chezmoi-templates` |
+| Add or modify config files | `chezmoi-add-config` |
+| Add external dependencies | `chezmoi-add-external` |
+| Sync documentation with data | `doc-sync` |
+| Understand chezmoi templates | `chezmoi-templates` |
 
 ## Making Changes
 
