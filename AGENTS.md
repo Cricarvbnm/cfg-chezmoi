@@ -22,6 +22,10 @@ This is a **chezmoi dotfile repository**, not a typical application. No build, t
 
 Prefix `private_` = restrictive permissions (600 for files, 700 for directories).
 
+Other key prefixes:
+- `symlink_` — source file content is a target path; chezmoi creates a symlink at the target location pointing to it (used in `dot_agents/exact_skills/` for skill enablement)
+- `exact_` — directory attribute; removes anything in the target directory not managed by chezmoi
+
 ## Conventions
 
 ### Source of Truth
