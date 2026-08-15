@@ -1,21 +1,22 @@
 -- Layouts & Window Rules
 
--- ── Dwindle ──
 hl.config({
+	-- ── Misc ──
+	misc = {
+		focus_on_activate = true,
+	},
+
+	-- ── Dwindle ──
 	dwindle = {
 		preserve_split = true,
 	},
-})
 
--- ── Master ──
-hl.config({
+	-- ── Master ──
 	master = {
 		new_status = "master",
 	},
-})
 
--- ── Scrolling ──
-hl.config({
+	-- ── Scrolling ──
 	scrolling = {
 		fullscreen_on_one_column = true,
 	},
