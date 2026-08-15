@@ -20,7 +20,7 @@ MAIN_MOD = "SUPER"
 hl.bind(MAIN_MOD .. " + T", hl.dsp.exec_cmd("kitty"))
 hl.bind(MAIN_MOD .. " + E", hl.dsp.exec_cmd("nemo"))
 hl.bind(MAIN_MOD .. " + B", hl.dsp.exec_cmd("firefox"))
-hl.bind(MAIN_MOD .. " + " .. MAIN_MOD .. "_L", hl.dsp.exec_cmd("fuzzel"), { release = true })
+hl.bind(MAIN_MOD .. " + R", hl.dsp.exec_cmd("fuzzel"), { release = true })
 
 -- ── Lock screen ──
 hl.bind(MAIN_MOD .. " + Escape", hl.dsp.exec_cmd("loginctl lock-session && swaylock; loginctl unlock-session"))
