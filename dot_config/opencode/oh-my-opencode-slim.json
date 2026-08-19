@@ -101,7 +101,7 @@
         "mcps": []
       },
       "observer": {
-        "model": "opencode-go/kimi-k2.6",
+        "model": "opencode/mimo-v2.5-free",
         "variant": "high",
         "skills": [],
         "mcps": []
