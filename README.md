@@ -47,7 +47,7 @@ Personal configuration managed by [chezmoi](https://www.chezmoi.io/). Designed f
 - **Editor**: [LazyVim](https://www.lazyvim.org/) (personal fork on Codeberg)
 - **Shell**: [Fish](https://fishshell.com/)
 - **Input Method**: Fcitx5 + [Rime](https://rime.im/)
-- **AI Tools**: OpenCode + antigravity-awesome-skills + Understand-Anything
+- **AI Tools**: OpenCode + antigravity-awesome-skills
 
 ## Prerequisites
 
@@ -97,7 +97,7 @@ A Linux system with a Wayland session. The following packages should be availabl
 - `pandoc` — document conversion (needed by pandoc-latex-template external)
 
 **AI Tools:**
-- `pnpm` (for Understand-Anything plugin)
+- `pnpm`
 
 ## Getting Started
 
@@ -163,7 +163,8 @@ Files prefixed with `private_` get restrictive permissions: 600 for files, 700 f
 │   │   ├── btop.conf                    # System monitor config
 │   │   └── themes/                      # Catppuccin theme
 │   ├── fontconfig/
-│   │   └── fonts.conf                   # CJK font preferences
+│   │   └── conf.d/
+│   │       └── 99-cjk-priority.conf     # CJK font preferences (high priority drop-in)
 │   ├── fuzzel/
 │   │   └── fuzzel.ini                   # App launcher + Catppuccin theme
 │   ├── git/
@@ -177,13 +178,17 @@ Files prefixed with `private_` get restrictive permissions: 600 for files, 700 f
 │   │   ├── input.lua                    # Input device settings
 │   │   ├── keybindings.lua             # Key bindings
 │   │   ├── monitors.lua                # Monitor configuration
+│   │   ├── reference.lua               # Keycode and modifier constants
 │   │   ├── rules.lua                   # Window rules
 │   │   ├── style.lua                   # Visual styling
-│   │   └── zoom.lua                    # Zoom/scale support
+│   │   ├── zoom.lua                    # Zoom/scale support
+│   │   ├── dot_luarc.json              # Lua Language Server config
+│   │   └── README.md                   # Hyprland architecture docs
 │   ├── opencode/                        # OpenCode AI agent config
 │   ├── private_fcitx5/
 │   │   ├── private_config               # Fcitx5 config (restrictive perms)
-│   │   └── private_profile              # Fcitx5 profile (restrictive perms)
+│   │   ├── private_profile.norm         # Fcitx5 profile (restrictive perms)
+│   │   └── run_onchange_sync-profile.tmpl  # Sync profile on change
 │   ├── private_fish/
 │   │   └── config.fish                  # Fish shell config (restrictive perms)
 │   ├── swaylock/
@@ -208,13 +213,14 @@ Files prefixed with `private_` get restrictive permissions: 600 for files, 700 f
 │       ├── gentoo/repos/local/           # Local Gentoo ebuilds
 │       ├── icons/
 │       │   └── symlink_default           # Default icon theme symlink
-│       └── kmonad/
-│           ├── alechron-at.kbd
-│           └── alechron-usb.kbd
+│       ├── kmonad/
+│       │   ├── alechron-at.kbd
+│       │   └── alechron-usb.kbd
+│       └── pacman/
+│           └── repo/local/              # Local Arch Linux packages
 ├── dot_agents/
 │   ├── symlink_all-skills              # → antigravity-awesome-skills
-│   ├── exact_skills/                    # Exact symlinks to skill defs
-│   └── Understand-Anything/             # → External: archive
+│   └── exact_skills/                    # Exact symlinks to skill defs
 ├── private_dot_ssh/
 │   └── config                           # SSH proxy via localhost:7890
 ├── texmf/
@@ -235,7 +241,6 @@ Defined in `.chezmoiexternal.toml.tmpl`. These are downloaded separately and kep
 | `~/knowledge` | `git-repo` | `ssh://git@codeberg.org/Alechron/knowledge-vault.git` | 168h (personal only) |
 | `~/.local/share/fcitx5/rime` | `archive` | GitHub: iDvel/rime-ice | 168h |
 | `~/.local/share/fcitx5/rime/cn_dicts/moegirl.dict.yaml` | `file` | GitHub: outloudvi/mw2fcitx | 168h |
-| `~/.agents/Understand-Anything` | `archive` | GitHub: Lum1104/Understand-Anything (plugin subdir only) | 168h |
 | `~/.agents/antigravity-awesome-skills` | `archive` | GitHub: sickn33/antigravity-awesome-skills | 168h |
 | `~/Templates/pandoc/pandoc-latex-template` | `archive` | GitHub: Wandmalfarbe/pandoc-latex-template | 168h |
 | `~/Projects/ppt-master` | `archive` | GitHub: hugohe3/ppt-master | 168h |
@@ -243,12 +248,12 @@ Defined in `.chezmoiexternal.toml.tmpl`. These are downloaded separately and kep
 
 ### Run Scripts
 
-chezmoi can execute scripts during apply. This repo uses `run_once_` scripts (execute once, then skip):
+chezmoi can execute scripts during apply:
 
 | Script | Purpose |
 |---|---|
 | `texmf/run_once_texhash.sh` | Runs `texhash ~/texmf` to index local TeX packages |
-| `dot_agents/.../run_once_pnpm_sync.sh` | Runs `pnpm install` in Understand-Anything plugin |
+| `dot_config/private_fcitx5/run_onchange_sync-profile.tmpl` | Syncs `private_profile.norm` to fcitx5 profile on change |
 
 ### Machine-Specific Configuration
 
