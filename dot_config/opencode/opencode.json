@@ -16,6 +16,10 @@
   "permission": {
     "external_directory": {
       "~/knowledge/**": "allow"
+    },
+    "bash": {
+      "sudo *": "deny",
+      "sudo": "deny"
     }
   }
 }

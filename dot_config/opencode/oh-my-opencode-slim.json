@@ -73,7 +73,7 @@
         "mcps": []
       },
       "librarian": {
-        "model": "opencode/deepseek-v4-flash-free",
+        "model": "opencode/deepseek-v4-flash",
         "skills": [],
         "mcps": [
           "websearch",
@@ -82,7 +82,7 @@
         ]
       },
       "explorer": {
-        "model": "opencode/deepseek-v4-flash-free",
+        "model": "opencode/deepseek-v4-flash",
         "skills": [],
         "mcps": []
       },
@@ -95,7 +95,7 @@
         "mcps": []
       },
       "fixer": {
-        "model": "opencode/deepseek-v4-flash-free",
+        "model": "opencode/deepseek-v4-flash",
         "variant": "high",
         "skills": [],
         "mcps": []
