@@ -22,7 +22,6 @@
 .config/fuzzel
 .config/swaylock
 .config/swaync
-.config/kitty
 
 .config/hypr
 .local/share/icons/default
