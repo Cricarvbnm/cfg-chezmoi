@@ -160,8 +160,9 @@ Files prefixed with `private_` get restrictive permissions: 600 for files, 700 f
 ~/.local/share/chezmoi/
 ├── dot_config/                          # → ~/.config/
 │   ├── btop/
-│   │   ├── btop.conf                    # System monitor config
-│   │   └── themes/                      # Catppuccin theme
+│   │   └── btop.conf                    # System monitor config
+│   ├── environment.d/
+│   │   └── path.conf                    # Add ~/.local/bin to PATH
 │   ├── fontconfig/
 │   │   └── conf.d/
 │   │       └── 99-cjk-priority.conf     # CJK font preferences (high priority drop-in)
@@ -171,7 +172,8 @@ Files prefixed with `private_` get restrictive permissions: 600 for files, 700 f
 │   │   ├── config.tmpl                  # Git aliases, user info (conditional)
 │   │   └── delta.conf                   # Delta diff pager config
 │   ├── kitty/
-│   │   └── kitty.conf                   # Terminal + Catppuccin theme
+│   │   ├── kitty.conf                   # Terminal config
+│   │   └── current-theme.conf           # Catppuccin Macchiato theme
 │   ├── hypr/
 │   │   ├── hyprland.lua                 # Main entry point
 │   │   ├── autostart.lua                # Startup applications
@@ -203,7 +205,7 @@ Files prefixed with `private_` get restrictive permissions: 600 for files, 700 f
 │   │   └── style.css                    # Catppuccin-themed bar
 │   └── nvim/                            # → External: LazyVim (git-repo)
 ├── dot_local/
-│   ├── bin/                              # Utility scripts (pqiv image viewer wrappers)
+│   ├── bin/                              # Utility scripts (pqiv/satty image viewer wrappers)
 │   └── share/
 │       ├── applications/
 │       │   └── pqiv.desktop              # pqiv desktop entry
