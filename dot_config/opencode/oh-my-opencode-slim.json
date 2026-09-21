@@ -1,6 +1,6 @@
 {
   "$schema": "https://unpkg.com/oh-my-opencode-slim@latest/oh-my-opencode-slim.schema.json",
-  "preset": "free",
+  "preset": "opencode-go",
   "presets": {
     "free": {
       "orchestrator": {
@@ -32,7 +32,7 @@
         ]
       },
       "explorer": {
-        "model": "opencode/ling-3.0.flash-fin-free",
+        "model": "opencode/ling-3.0-flash-fin-free",
         "variant": "low",
         "skills": [],
         "mcps": []
@@ -100,7 +100,7 @@
     },
     "opencode-go": {
       "orchestrator": {
-        "model": "opencode-go/minimax-m3",
+        "model": "opencode/minimax-m3",
         "variant": "thinking",
         "skills": [
           "*"
@@ -111,7 +111,7 @@
         ]
       },
       "oracle": {
-        "model": "opencode-go/qwen3.7-max",
+        "model": "opencode/qwen3.7-max",
         "variant": "max",
         "skills": [
           "simplify"
@@ -119,13 +119,13 @@
         "mcps": []
       },
       "explorer": {
-        "model": "opencode-go/deepseek-v4-flash",
+        "model": "opencode/deepseek-v4-flash",
         "variant": "high",
         "skills": [],
         "mcps": []
       },
       "librarian": {
-        "model": "opencode-go/deepseek-v4-flash",
+        "model": "opencode/deepseek-v4-flash",
         "variant": "high",
         "skills": [],
         "mcps": [
@@ -134,18 +134,18 @@
         ]
       },
       "designer": {
-        "model": "opencode-go/kimi-k2.7-code",
+        "model": "opencode/kimi-k2.7-code",
         "skills": [],
         "mcps": []
       },
       "fixer": {
-        "model": "opencode-go/deepseek-v4-flash",
+        "model": "opencode/deepseek-v4-flash",
         "variant": "high",
         "skills": [],
         "mcps": []
       },
       "observer": {
-        "model": "opencode-go/mimo-v2.5",
+        "model": "opencode/mimo-v2.5",
         "skills": [],
         "mcps": []
       }
