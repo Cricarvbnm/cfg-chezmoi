@@ -161,8 +161,6 @@ Files prefixed with `private_` get restrictive permissions: 600 for files, 700 f
 ├── dot_config/                          # → ~/.config/
 │   ├── btop/
 │   │   └── btop.conf                    # System monitor config
-│   ├── environment.d/
-│   │   └── path.conf                    # Add ~/.local/bin to PATH
 │   ├── fontconfig/
 │   │   └── conf.d/
 │   │       └── 99-cjk-priority.conf     # CJK font preferences (high priority drop-in)
@@ -221,7 +219,6 @@ Files prefixed with `private_` get restrictive permissions: 600 for files, 700 f
 │       └── pacman/
 │           └── repo/local/              # Local Arch Linux packages
 ├── dot_agents/
-│   ├── symlink_all-skills              # → antigravity-awesome-skills
 │   └── exact_skills/                    # Exact symlinks to skill defs
 ├── private_dot_ssh/
 │   └── config                           # SSH proxy via localhost:7890
@@ -242,8 +239,9 @@ Defined in `.chezmoiexternal.toml.tmpl`. These are downloaded separately and kep
 | `~/.config/nvim` | `git-repo` | `ssh://git@codeberg.org/Alechron/cfg-lazyvim.git` | 168h |
 | `~/knowledge` | `git-repo` | `ssh://git@codeberg.org/Alechron/knowledge-vault.git` | 168h (personal only) |
 | `~/.local/share/fcitx5/rime` | `archive` | GitHub: iDvel/rime-ice | 168h |
-| `~/.local/share/fcitx5/rime/cn_dicts/moegirl.dict.yaml` | `file` | GitHub: outloudvi/mw2fcitx | 168h |
 | `~/.agents/antigravity-awesome-skills` | `archive` | GitHub: sickn33/antigravity-awesome-skills | 168h |
+| `~/.agents/Humanizer` | `archive` | GitHub: blader/humanizer | 168h |
+| `~/.agents/Humanizer-zh` | `archive` | GitHub: op7418/Humanizer-zh | 168h |
 | `~/Templates/pandoc/pandoc-latex-template` | `archive` | GitHub: Wandmalfarbe/pandoc-latex-template | 168h |
 | `~/Projects/ppt-master` | `archive` | GitHub: hugohe3/ppt-master | 168h |
 | `~/.config/hypr/docs/xkbcommon-keysyms.h` | `file` | GitHub: xkbcommon/libxkbcommon | 168h |
