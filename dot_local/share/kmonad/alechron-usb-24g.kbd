@@ -1,0 +1,66 @@
+(defcfg
+  input  (device-file "/dev/input/by-id/usb-CX_2.4G_Wireless_Receiver-event-kbd")
+  output (uinput-sink "kmonad-alechron-usb")
+  fallthrough true
+)
+
+#| --------------------------------------------------------------------------
+
+Features:
+- Caps = Esc on tap, Left Ctrl on hold (tap-hold-next-release)
+- Right Ctrl: 1 tap = rctrl, 2 taps = switch to base, 3 taps = game, 4 taps = normal
+
+Layers:
+- base  — Caps as Esc/Ctrl，Esc as Caps, standard otherwise
+- game  — no tap-hold, Caps = pure lctl
+- normal — standard keyboard
+
+  -------------------------------------------------------------------------- |#
+
+(defsrc
+  esc  f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12
+  grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc  ins  home pgup
+  tab  q    w    e    r    t    y    u    i    o    p    [    ]    \     del  end  pgdn
+  caps a    s    d    f    g    h    j    k    l    ;    '    ret
+  lsft z    x    c    v    b    n    m    ,    .    /    rsft                 up       
+  lctl lmet lalt           spc            ralt rmet cmp  rctl            left down rght
+)
+
+(defalias
+  ctl (tap-hold-next 200 esc lctl) ;; Caps: esc when tapped, left ctrl when held/combined.
+
+  ;; rctrl: 1=rctrl, 2=switch to base, 3=game, 4=normal.
+  ;; Hold/combine still acts as rctrl modifier.
+  lyr (multi-tap 200 rctrl 200 (layer-switch base) 200 (layer-switch game) (layer-switch normal))
+)
+
+;; Esc as caps-lock, caps-lock as super left ctrl
+(deflayer base
+  caps f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12
+  grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc  ins  home pgup
+  tab  q    w    e    r    t    y    u    i    o    p    [    ]    \     del  end  pgdn
+  @ctl a    s    d    f    g    h    j    k    l    ;    '    ret
+  lsft z    x    c    v    b    n    m    ,    .    /    rsft                 up       
+  lctl lmet lalt           spc            ralt rmet cmp  @lyr            left down rght
+)
+
+;; Game layer — no delay, caps = pure esc.
+(deflayer game
+  caps  f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12
+  grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc  ins  home pgup
+  tab  q    w    e    r    t    y    u    i    o    p    [    ]    \     del  end  pgdn
+  lctl a    s    d    f    g    h    j    k    l    ;    '    ret
+  lsft z    x    c    v    b    n    m    ,    .    /    rsft                 up       
+  esc  lmet lalt           spc            ralt rmet cmp  @lyr            left down rght
+)
+
+;; Normal layer - just as a normal keyboard
+(deflayer normal
+  esc  f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12
+  grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc  ins  home pgup
+  tab  q    w    e    r    t    y    u    i    o    p    [    ]    \     del  end  pgdn
+  caps a    s    d    f    g    h    j    k    l    ;    '    ret
+  lsft z    x    c    v    b    n    m    ,    .    /    rsft                 up       
+  lctl lmet lalt           spc            ralt rmet cmp  @lyr            left down rght
+)
+
