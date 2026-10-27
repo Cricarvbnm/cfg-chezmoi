@@ -27,8 +27,11 @@ if ! command -v npx >/dev/null 2>&1; then
   exit 0
 fi
 
-# Curated skill list. Each entry is `pkg:sub-skill`. Re-run `npx skills ls -g --json`
-# to refresh the list when the user's installed set changes.
+# Curated skill list. Each entry is `pkg:sub-skill`. `pkg` is either the upstream
+# `owner/repo` shorthand (GitHub) or a full git URL ending in `.git` (required for
+# GitCode and other non-GitHub hosts — shorthand always resolves to GitHub).
+# Re-run `npx skills ls -g --json` to refresh the list when the user's installed
+# set changes.
 skills=(
   xenitV1/Antigravity-Workflows:bash-linux
   anthropics/knowledge-work-plugins:documentation
@@ -42,6 +45,7 @@ skills=(
   daymade/claude-code-skills:skill-reviewer
   softaworks/agent-toolkit:humanizer
   op7418/humanizer-zh:humanizer-zh
+  https://gitcode.com/Cricar/ascend-skill-finder.git:ascend-skill-finder
 )
 
 # Target agents. Edit this list to limit which agents receive skills.
@@ -89,8 +93,10 @@ done
 installed_count=0
 fail_count=0
 for entry in "${skills[@]}"; do
-  pkg="${entry%%:*}"
-  sub="${entry#*:}"
+  # Split on the LAST colon: URLs contain `:` (https://), so a first-colon
+  # split would truncate them.
+  pkg="${entry%:*}"
+  sub="${entry##*:}"
   if [ -d "$HOME/.agents/skills/$sub" ]; then
     continue  # silently skipped
   fi
