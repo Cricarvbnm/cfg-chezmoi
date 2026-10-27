@@ -1,2 +1,4 @@
+Include config.d/*
+
 Host !*.local *
 	ProxyCommand nc -Xconnect -x localhost:7890 %h %p
