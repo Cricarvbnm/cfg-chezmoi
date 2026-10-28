@@ -4,10 +4,6 @@
 # Include global AGENTS.md (personal only)
 {{ if .personal }}
 !.config/opencode/AGENTS.md
-{{ end }}
-
-# Tieba sign-in (desktop + personal)
-{{ if not (and .personal .desktop) }}
 .config/tieba-sign/encrypted_config.toml.asc
 {{ end }}
 
