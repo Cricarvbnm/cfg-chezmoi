@@ -18,8 +18,10 @@
 	ca = "commit --all"
 	cu = "commit --amend"
 
+{{- if eq .chezmoi.os "linux" }}
 [include]
 	path = delta.conf
 
 [core]
 	askPass = ksshaskpass
+{{- end }}

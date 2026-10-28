@@ -1,9 +1,17 @@
+# chezmoi:template:missing-key=invalid
+
 **/README.md
 **/AGENTS.md
 
+# Windows
+{{ if eq .chezmoi.os "windows" }}
+.npmrc # Use default prefix
+.config/fcitx5
+{{ end }}
+
 # WSL Debian only in terminal
 {{ if eq .chezmoi.osRelease.id "debian" }}
-.local/share/{kmonad,fcitx5}
+.local/share/fcitx5
 .config/{fcitx5,fontconfig,opencode}
 .agents
 .npmrc
