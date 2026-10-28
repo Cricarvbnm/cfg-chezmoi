@@ -2,5 +2,5 @@
 Include config.d/*
 {{ if .proxy }}
 Host !*.local *
-	ProxyCommand {{ if .windows }}connect -H{{ else }}nc -Xconnect -x{{ end }} {{ .proxy.ip }}:{{ $proxyPort }} %h %p
+	ProxyCommand connect -H {{ .proxy.ip }}:{{ $proxyPort }} %h %p
 {{- end }}
