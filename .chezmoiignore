@@ -1,36 +1,29 @@
-# chezmoi:template:missing-key=invalid
-
+# Repo-only documentation, never deployed
 **/README.md
 **/AGENTS.md
 
-# Windows
-{{ if eq .chezmoi.os "windows" }}
-.npmrc # Use default prefix
-.config/fcitx5
-.local/share/fcitx5
-{{ end }}
-
-# WSL Debian only in terminal
-{{ if eq .chezmoi.osRelease.id "debian" }}
-.config/{fcitx5,fontconfig,opencode}
-.agents
-.npmrc
-texmf
-{{ end }}
-
-# Linux Only
-{{ if not (eq .chezmoi.os "linux") }}
-.config/{fontconfig,fish}
-texmf
-{{ end }}
-
-# Include global AGENTS.md (personal only)
-{{ if .personal }}
+# Re-include opencode's global AGENTS.md wherever opencode is deployed
+{{ if and .alec .desktop }}
 !.config/opencode/AGENTS.md
-.config/tieba-sign/encrypted_config.toml.asc
 {{ end }}
 
-# Pacman local repo
-{{ if not (eq .chezmoi.osRelease.id "cachyos") }}
-.local/share/pacman
+{{ if not (and .linux .desktop) }}
+.config/fcitx5
+.config/fontconfig
+.local/share/fcitx5
+texmf
+{{ end }}
+
+{{ if not .linux }}
+.config/fish
+.npmrc
+{{ end }}
+
+{{ if not (and .linux .alec) }}
+.config/tieba-sign
+{{ end }}
+
+{{ if not .desktop }}
+.agents
+.config/opencode
 {{ end }}
