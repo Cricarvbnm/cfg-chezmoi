@@ -3,21 +3,16 @@
 
 # WSL Debian only in terminal
 {{ if eq .chezmoi.osRelease.id "debian" }}
-dot_local/kmonad
-dot_local/share/fcitx5
-dot_config/private_fcitx5
-dot_config/fontconfig
-dot_config/tieba-sign
-dot_config/opencode
-dot_agents
-private_dot_npmrc
+.local/share/{kmonad,fcitx5}
+.config/{fcitx5,fontconfig,opencode}
+.agents
+.npmrc
 texmf
 {{ end }}
 
 # Linux Only
 {{ if not (eq .chezmoi.os "linux") }}
-dot_config/fontconfig
-dot_config/private_fish
+.config/{fontconfig,fish}
 texmf
 {{ end }}
 
