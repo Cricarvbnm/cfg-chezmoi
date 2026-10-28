@@ -6,11 +6,6 @@
 !.config/opencode/AGENTS.md
 {{ end }}
 
-# SSH proxy
-{{ if not .proxy }}
-.ssh/config
-{{ end }}
-
 # Tieba sign-in (desktop + personal)
 {{ if not (and .personal .desktop) }}
 .config/tieba-sign/encrypted_config.toml.asc

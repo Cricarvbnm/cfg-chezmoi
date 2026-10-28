@@ -1,4 +1,6 @@
 Include config.d/*
 
+{{- if not .proxy }}
 Host !*.local *
-	ProxyCommand nc -Xconnect -x localhost:7890 %h %p
+	ProxyCommand nc -Xconnect -x {{- .proxy.ip -}} %h %p
+{{- end }}
