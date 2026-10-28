@@ -1,6 +1,6 @@
+{{- $proxyPort := 7890 -}}
 Include config.d/*
-
-{{- if not .proxy }}
+{{ if .proxy }}
 Host !*.local *
-	ProxyCommand nc -Xconnect -x {{- .proxy.ip -}} %h %p
+	ProxyCommand {{ if .windows }}connect -H{{ else }}nc -Xconnect -x{{ end }} {{ .proxy.ip }}:{{ $proxyPort }} %h %p
 {{- end }}
