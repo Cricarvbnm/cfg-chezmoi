@@ -8,6 +8,6 @@
 {{ end }}
 
 # Pacman local repo
-{{ if not .archlinux }}
+{{ if not (eq .chezmoi.osRelease.id "cachyos") }}
 .local/share/pacman
 {{ end }}
