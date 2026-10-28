@@ -1,6 +1,13 @@
 **/README.md
 **/AGENTS.md
 
+# Linux Only
+{{ if not (eq .chezmoi.os "linux") }}
+dot_config/fontconfig
+dot_config/private_fish
+texmf
+{{ end }}
+
 # Include global AGENTS.md (personal only)
 {{ if .personal }}
 !.config/opencode/AGENTS.md
