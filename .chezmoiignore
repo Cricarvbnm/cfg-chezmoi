@@ -16,11 +16,6 @@
 .config/tieba-sign/encrypted_config.toml.asc
 {{ end }}
 
-# Portage local repo
-{{ if not .gentoo }}
-.local/share/gentoo
-{{ end }}
-
 # Pacman local repo
 {{ if not .archlinux }}
 .local/share/pacman
