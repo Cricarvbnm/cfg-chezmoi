@@ -18,6 +18,9 @@
 	ca = "commit --all"
 	cu = "commit --amend"
 
+[core]
+	autocrlf = "input"
+
 {{- if eq .chezmoi.os "linux" }}
 [include]
 	path = delta.conf
