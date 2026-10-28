@@ -27,3 +27,10 @@ type = "archive"
 url = "https://github.com/hugohe3/ppt-master/archive/master.tar.gz"
 stripComponents = 1
 refreshPeriod = "168h"
+
+{{ if eq .chezmoi.osRelease.id "cachyos" }}
+[".local/share/pacman/repo/local"]
+type = "git-repo"
+url = "git@github.com:Cricarvbnm/pacman-repo.git"
+refreshPeriod = "168h"
+{{ end }}
