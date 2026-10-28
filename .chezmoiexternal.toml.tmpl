@@ -3,13 +3,14 @@ type = "git-repo"
 url = "ssh://git@codeberg.org/Alechron/cfg-lazyvim.git"
 refreshPeriod = "168h"
 
-{{ if .personal }}
+{{ if and .personal (not (eq .chezmoi.osRelease.id "debian")) }}
 ["knowledge"]
 type = "git-repo"
 url = "ssh://git@codeberg.org/Alechron/knowledge-vault.git"
 refreshPeriod = "168h"
 {{ end }}
 
+{{ if not (eq .chezmoi.osRelease.id "debian") }}
 [".local/share/fcitx5/rime"]
 type = "archive"
 url = "https://github.com/iDvel/rime-ice/archive/refs/heads/main.zip"
@@ -27,6 +28,7 @@ type = "archive"
 url = "https://github.com/hugohe3/ppt-master/archive/master.tar.gz"
 stripComponents = 1
 refreshPeriod = "168h"
+{{ end }}
 
 {{ if eq .chezmoi.osRelease.id "cachyos" }}
 [".local/share/pacman/repo/local"]
