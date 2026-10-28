@@ -16,22 +16,6 @@
 .config/tieba-sign/encrypted_config.toml.asc
 {{ end }}
 
-# Custom DE (hyprland + Wayland companions)
-{{ if not .custom_de }}
-.config/waybar
-.config/fuzzel
-.config/swaylock
-.config/swaync
-
-.config/hypr
-.local/share/icons/default
-
-.local/bin/pqiv-*
-.local/share/applications/pqiv.desktop
-
-.config/btop # Replaced by KDE info center
-{{ end }}
-
 # Portage local repo
 {{ if not .gentoo }}
 .local/share/gentoo

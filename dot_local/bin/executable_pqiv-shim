@@ -1,7 +1,0 @@
-#!/usr/bin/env sh
-exec pqiv -i \
-  --bind-key='c { command(pqiv-satty-crop); }' \
-  --bind-key='a { command(pqiv-satty-annotate); }' \
-  --bind-key='<Shift>r { command(pqiv-rotate-r); }' \
-  --bind-key='<Shift>l { command(pqiv-rotate-l); }' \
-  "$@"
