@@ -3,7 +3,7 @@
 **/AGENTS.md
 
 # Re-include opencode's global AGENTS.md wherever opencode is deployed
-{{ if and .alec .desktop }}
+{{ if and .alec .linux }}
 !.config/opencode/AGENTS.md
 {{ end }}
 
@@ -23,7 +23,7 @@ texmf
 .config/tieba-sign
 {{ end }}
 
-{{ if not .desktop }}
 .agents
+{{ if not .linux }}
 .config/opencode
 {{ end }}
