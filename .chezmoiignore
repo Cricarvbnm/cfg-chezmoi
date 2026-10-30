@@ -27,3 +27,7 @@ texmf
 {{ if not .linux }}
 .config/opencode
 {{ end }}
+
+{{ if not .windows }}
+AppData
+{{ end }}
