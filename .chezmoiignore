@@ -15,7 +15,7 @@ texmf
 {{ end }}
 
 {{ if not .linux }}
-.config/{fish,environment.d}
+.config/fish
 .npmrc
 {{ end }}
 
