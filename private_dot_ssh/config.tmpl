@@ -4,8 +4,8 @@ Include config.d/*
 Host !*.local *
 	ProxyCommand connect -H {{ .proxy.ip }}:{{ $proxyPort }} %h %p
 {{- end }}
+{{- if .linux }}
 
-{{ if .linux -}}
 # 连接复用：复用同一条 TCP 连接，避免每次 ssh 都走代理+握手
 Host *
 	ControlMaster auto
