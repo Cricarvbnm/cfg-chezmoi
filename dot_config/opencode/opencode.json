@@ -15,7 +15,8 @@
   "lsp": true,
   "permission": {
     "external_directory": {
-      "~/knowledge/**": "allow"
+      "~/knowledge/**": "allow",
+      "/tmp/opencode/**": "allow"
     },
     "bash": {
       "sudo *": "deny",

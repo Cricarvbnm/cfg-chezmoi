@@ -5,7 +5,7 @@
     "deepseek": {
       "orchestrator": {
         "model": "deepseek/deepseek-v4-pro",
-        "variant": "thinking",
+        "variant": "high",
         "skills": [
           "*"
         ],
