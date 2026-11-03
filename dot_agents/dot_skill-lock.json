@@ -122,6 +122,58 @@
       "skillFolderHash": "76a98a285cb0434f3d39e1a873823556330e398b",
       "installedAt": "2026-11-03T07:45:20.719Z",
       "updatedAt": "2026-11-03T07:45:20.719Z"
+    },
+    "msot-msopprof-operator-profiler": {
+      "source": "/tmp/ict-ascend-skills",
+      "sourceType": "local",
+      "sourceUrl": "/tmp/ict-ascend-skills",
+      "skillFolderHash": "19b5d788ba2a6a60927fc04578d48ee9e096f9d3b3f213c149c4646006827d63",
+      "pluginName": "mindstudio-profiling-skills",
+      "installedAt": "2026-11-03T11:09:59.689Z",
+      "updatedAt": "2026-11-03T11:09:59.689Z"
+    },
+    "ascendc-operator-code-review": {
+      "source": "/tmp/ict-ascend-skills",
+      "sourceType": "local",
+      "sourceUrl": "/tmp/ict-ascend-skills",
+      "skillFolderHash": "d5d1b2a665ca2eaae9fa2e0d8c07efc4875f9a9943ecb13bda9788f2ab0447a0",
+      "pluginName": "community-ascendc-op-skills",
+      "installedAt": "2026-11-03T11:09:59.692Z",
+      "updatedAt": "2026-11-03T11:09:59.692Z"
+    },
+    "ascendc-operator-precision-debug": {
+      "source": "/tmp/ict-ascend-skills",
+      "sourceType": "local",
+      "sourceUrl": "/tmp/ict-ascend-skills",
+      "skillFolderHash": "8e733c7283f1c39bfd6b323a547c88e9807cde5b2ae8778d4d8a317d67aedec7",
+      "pluginName": "community-ascendc-op-skills",
+      "installedAt": "2026-11-03T11:09:59.693Z",
+      "updatedAt": "2026-11-03T11:09:59.693Z"
+    },
+    "ascendc-operator-testcase-gen": {
+      "source": "/tmp/ict-ascend-skills",
+      "sourceType": "local",
+      "sourceUrl": "/tmp/ict-ascend-skills",
+      "skillFolderHash": "3ebd5bb64d47e25dd82437ec65aa2ea7925bb47408376ac34f6b8567a11241d1",
+      "pluginName": "community-ascendc-op-skills",
+      "installedAt": "2026-11-03T11:09:59.694Z",
+      "updatedAt": "2026-11-03T11:09:59.694Z"
+    },
+    "ascendc-operator-performance-optim": {
+      "source": "/tmp/ict-ascend-skills/community/Op/ascendc-operator-performance-optim",
+      "sourceType": "local",
+      "sourceUrl": "/tmp/ict-ascend-skills/community/Op/ascendc-operator-performance-optim",
+      "skillFolderHash": "7354158aff45c6302336bab72b0c50ff629944ddfdc7248f7572fcb6b31a168f",
+      "installedAt": "2026-11-03T11:10:30.732Z",
+      "updatedAt": "2026-11-03T11:10:30.732Z"
+    },
+    "ascendc-mssanitizer": {
+      "source": "/tmp/ict-ascend-skills/community/Op/ascendc-operator-mssanitizer",
+      "sourceType": "local",
+      "sourceUrl": "/tmp/ict-ascend-skills/community/Op/ascendc-operator-mssanitizer",
+      "skillFolderHash": "0734ccd1ea6cce70d80dd897ecedf7196e32d661d61f10bd0e19cb98fdaab000",
+      "installedAt": "2026-11-03T11:11:10.298Z",
+      "updatedAt": "2026-11-03T11:11:10.298Z"
     }
   },
   "dismissed": {
