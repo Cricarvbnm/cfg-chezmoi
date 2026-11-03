@@ -23,7 +23,6 @@ texmf
 .config/tieba-sign
 {{ end }}
 
-.agents
 {{ if not .linux }}
 .config/opencode
 {{ end }}
