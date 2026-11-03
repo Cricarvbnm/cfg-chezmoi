@@ -21,7 +21,7 @@
 [core]
 	autocrlf = "input"
 
-{{- if eq .chezmoi.os "linux" }}
+{{ if eq .chezmoi.os "linux" -}}
 [include]
 	path = delta.conf
 
