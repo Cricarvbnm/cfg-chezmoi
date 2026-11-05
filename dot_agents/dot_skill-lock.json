@@ -174,6 +174,15 @@
       "skillFolderHash": "0734ccd1ea6cce70d80dd897ecedf7196e32d661d61f10bd0e19cb98fdaab000",
       "installedAt": "2026-11-03T11:11:10.298Z",
       "updatedAt": "2026-11-03T11:11:10.298Z"
+    },
+    "instruction-architecture": {
+      "source": "Cricarvbnm/instruction-architecture",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/Cricarvbnm/instruction-architecture.git",
+      "skillPath": "SKILL.md",
+      "skillFolderHash": "b213abaff96cc3f13db18e8966b45926a9494b61",
+      "installedAt": "2026-11-05T01:17:20.808Z",
+      "updatedAt": "2026-11-05T01:17:20.808Z"
     }
   },
   "dismissed": {
