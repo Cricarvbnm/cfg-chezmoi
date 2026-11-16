@@ -5,14 +5,14 @@
 # Everywhere
 {{ if .windows }}["AppData/Local/nvim"]{{ else }}[".config/nvim"]{{ end }}
 type = "git-repo"
-url = "ssh://git@codeberg.org/Alechron/cfg-lazyvim.git"
+url = "ssh://git@github.com/Cricarvbnm/cfg-lazyvim.git"
 refreshPeriod = "168h"
 
 # Personal knowledge vault
 {{ if and .alec .desktop }}
 ["knowledge"]
 type = "git-repo"
-url = "ssh://git@codeberg.org/Alechron/knowledge-vault.git"
+url = "ssh://git@github.com/Cricarvbnm/knowledge-vault.git"
 refreshPeriod = "168h"
 {{ end }}
 
