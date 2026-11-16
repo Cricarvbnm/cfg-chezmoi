@@ -2,6 +2,10 @@
 **/README.md
 **/AGENTS.md
 
+{{ if not .proxy }}
+.config/fish/conf.d/proxy.fish
+{{ end }}
+
 # Re-include opencode's global AGENTS.md wherever opencode is deployed
 {{ if and .alec .linux }}
 !.config/opencode/AGENTS.md

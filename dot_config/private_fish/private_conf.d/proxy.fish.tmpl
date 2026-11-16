@@ -1,0 +1,8 @@
+set -gx HTTP_PROXY http://{{ .proxy.ip }}:7890
+set -gx HTTPS_PROXY http://{{ .proxy.ip }}:7890
+set -gx ALL_PROXY http://{{ .proxy.ip }}:7890
+set -gx NO_PROXY localhost,::,127.0.0.1,*.local
+set -gx http_proxy $HTTP_PROXY
+set -gx https_proxy $HTTPS_PROXY
+set -gx all_proxy $ALL_PROXY
+set -gx no_proxy $NO_PROXY
