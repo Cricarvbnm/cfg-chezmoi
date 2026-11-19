@@ -7,8 +7,7 @@
 {{ end }}
 
 {{ if not (and .linux .desktop) }}
-.config/fcitx5
-.local/share/fcitx5
+.local/share/fcitx5/rime
 texmf
 {{ end }}
 
