@@ -8,7 +8,6 @@
 
 {{ if not (and .linux .desktop) }}
 .config/fcitx5
-.config/fontconfig
 .local/share/fcitx5
 texmf
 {{ end }}
