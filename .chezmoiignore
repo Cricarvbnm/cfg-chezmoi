@@ -6,9 +6,8 @@
 .config/fish/conf.d/proxy.fish
 {{ end }}
 
-{{ if not (and .linux .desktop) }}
+{{ if not .desktop }}
 .local/share/fcitx5/rime
-texmf
 {{ end }}
 
 {{ if not .linux }}
