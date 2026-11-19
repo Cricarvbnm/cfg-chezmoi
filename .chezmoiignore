@@ -14,6 +14,7 @@ AGENTS.md
 .config/fish
 .npmrc
 .codex
+.ssh/cm
 {{ end }}
 
 {{ if not (and .linux .alec) }}
