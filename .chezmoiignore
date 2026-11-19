@@ -13,6 +13,7 @@ AGENTS.md
 {{ if not .linux }}
 .config/fish
 .npmrc
+.codex
 {{ end }}
 
 {{ if not (and .linux .alec) }}
