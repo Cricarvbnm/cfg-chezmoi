@@ -1,6 +1,6 @@
 # Repo-only documentation, never deployed
 **/README.md
-**/AGENTS.md
+AGENTS.md
 
 {{ if not .proxy }}
 .config/fish/conf.d/proxy.fish
