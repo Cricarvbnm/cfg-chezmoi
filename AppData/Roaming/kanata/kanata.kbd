@@ -1,60 +1,30 @@
-;; ============================================================================
-;; alechron-windows.kbd — Windows 版 kanata 配置（由 kmonad 配置移植）
-;;
-;; 特性：
-;;   - Caps    : 点按 Esc，按住/组合左 Ctrl
-;;   - 右 Ctrl : 1击=rctrl，2击=base，3击=game，4击=normal
-;;   - 三层    : base / game / normal
-;;   - 多键盘  : Windows 端 kanata 是全局 hook，不用指定设备，
-;;               三把键盘一个进程全管。
-;; ============================================================================
+;; Esc -> Caps; Caps -> Esc when tapped, left Ctrl when held.
+;; Physical modifiers, navigation keys and function keys bypass Kanata.
 
 (defcfg
-  ;; 只处理 defsrc 里的键；小键盘等其它键交给系统原样处理。
-  ;; （在 Windows 上开 yes 可能让右 Alt 变成 AltGr，所以保持 no。）
   process-unmapped-keys no
 )
 
 (defsrc
-  esc  f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12
-  grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc  ins  home pgup
-  tab  q    w    e    r    t    y    u    i    o    p    [    ]    \     del  end  pgdn
-  caps a    s    d    f    g    h    j    k    l    ;    '    ret
-  lsft z    x    c    v    b    n    m    ,    .    /    rsft                 up
-  lctl lmet lalt           spc            ralt rmet menu rctl            left down rght
+  esc
+  grv 1 2 3 4 5 6 7 8 9 0 - = bspc
+  tab q w e r t y u i o p [ ] \
+  caps a s d f g h j k l ; ' ret
+  z x c v b n m , . /
+  spc
 )
 
 (defalias
-  ;; Caps：点按 Esc，按住/组合左 Ctrl
+  ;; Captured typing keys trigger Ctrl immediately when pressed after Caps.
+  ;; For bypassed keys, hold Caps for 200 ms before pressing the next key.
   ctl (tap-hold-press 200 200 esc lctl)
-
-  ;; 右 Ctrl：1 击=rctl，2 击=base，3 击=game，4 击=normal
-  lyr (tap-dance 200 (rctl (layer-switch base) (layer-switch game) (layer-switch normal)))
 )
 
 (deflayer base
-  caps f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12
-  grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc  ins  home pgup
-  tab  q    w    e    r    t    y    u    i    o    p    [    ]    \     del  end  pgdn
-  @ctl a    s    d    f    g    h    j    k    l    ;    '    ret
-  lsft z    x    c    v    b    n    m    ,    .    /    rsft                 up
-  lctl lmet lalt           spc            ralt rmet menu @lyr            left down rght
-)
-
-(deflayer game
-  caps  f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12
-  grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc  ins  home pgup
-  tab  q    w    e    r    t    y    u    i    o    p    [    ]    \     del  end  pgdn
-  lctl a    s    d    f    g    h    j    k    l    ;    '    ret
-  lsft z    x    c    v    b    n    m    ,    .    /    rsft                 up
-  esc  lmet lalt           spc            ralt rmet menu @lyr            left down rght
-)
-
-(deflayer normal
-  esc  f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12
-  grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc  ins  home pgup
-  tab  q    w    e    r    t    y    u    i    o    p    [    ]    \     del  end  pgdn
-  caps a    s    d    f    g    h    j    k    l    ;    '    ret
-  lsft z    x    c    v    b    n    m    ,    .    /    rsft                 up
-  lctl lmet lalt           spc            ralt rmet menu @lyr            left down rght
+  caps
+  grv 1 2 3 4 5 6 7 8 9 0 - = bspc
+  tab q w e r t y u i o p [ ] \
+  @ctl a s d f g h j k l ; ' ret
+  z x c v b n m , . /
+  spc
 )
